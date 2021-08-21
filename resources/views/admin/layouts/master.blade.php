@@ -19,7 +19,7 @@
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
 
-            @if ($page_type = 'Admin')
+            @if ($page_type == 'Admin')
                 @include('admin.layouts.header')
                 @include('admin.layouts.sidebar')
             @endif
@@ -28,7 +28,7 @@
             @yield('content')
 
 
-            @if ($page_type = 'Admin')
+            @if ($page_type == 'Admin')
                 @include('admin.layouts.footer')
             @endif
 
