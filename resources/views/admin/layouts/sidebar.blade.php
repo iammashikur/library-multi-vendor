@@ -13,16 +13,9 @@
             </li>
 
             <li class="dropdown {{ MenuActive('settings', 1) }}">
-                <a href="{{ url('/settings') }}" class="nav-link"><i data-feather="gear"></i><span>Settings</span></a>
-            </li>
+                <a href="{{ url('/settings') }}" class="nav-link"><i
+                        data-feather="briefcase"></i><span>settings</span></a>
 
-            <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Widgets</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-                    <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
-                </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
