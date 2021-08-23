@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'Dashboard']);
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+  Route::get('/dashboard', [DashboardController::class, 'Dashboard'])->name('dashboard');
 // Route::get('/dashboard', [DashboardController::class, 'Dashboard']);
-// Route::get('/settings', [DashboardController::class, 'Settings']);
+// Route::get('/settings', [DashboardController::class, 'Settings']);  
+});
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

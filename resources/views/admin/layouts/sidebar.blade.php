@@ -7,8 +7,8 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown {{ MenuActive('dashboard', 1) }}">
-                <a href="{{ url('/') }}" class="nav-link"><i
+            <li class="dropdown {{ MenuActive('dashboard', 2) }}">
+                <a href="{{ url('/dashboard') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
@@ -16,7 +16,7 @@
                 <a href="{{ url('/settings') }}" class="nav-link"><i
                         data-feather="briefcase"></i><span>settings</span></a>
             </li>
-            
+
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="command"></i><span>Apps</span></a>
