@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'Login']);
-Route::get('/dashboard', [DashboardController::class, 'Dashboard']);
-Route::get('/settings', [DashboardController::class, 'Settings']);
+Route::get('/', [DashboardController::class, 'Dashboard']);
+// Route::get('/dashboard', [DashboardController::class, 'Dashboard']);
+// Route::get('/settings', [DashboardController::class, 'Settings']);
