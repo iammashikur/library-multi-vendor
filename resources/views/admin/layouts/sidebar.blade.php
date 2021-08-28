@@ -12,6 +12,11 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
+            <li class="dropdown {{ MenuActive('dashboard', 2) }}">
+                <a href="{{ route('admin.category.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Category</span></a>
+            </li>
+
             <li class="dropdown {{ MenuActive('settings', 1) }}">
                 <a href="{{ url('/settings') }}" class="nav-link"><i
                         data-feather="briefcase"></i><span>settings</span></a>
