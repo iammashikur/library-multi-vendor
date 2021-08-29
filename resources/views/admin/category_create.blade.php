@@ -5,27 +5,37 @@
 
 @section('content')
 
-<x-admin.main-content>
-    <x-admin.card heading='Create Category'>
-        <x-slot name='action'>
-            <a href="#" class="btn btn-success">Go Back</a>
-        </x-slot>
-
-        <x-admin.form action="" method="">
-            <div class="row">
-                <div class="col-md-6">
-                    <x-admin.form-input lable='hello' type='text'/>
-                </div>
-                <div class="col-md-6">
-                    <x-admin.form-input-select name="">
-                        <option value="">Blog</option>
-                        <option value="">Book</option>
-                    </x-admin.input-select>
+<div class="main-content">
+    <div class="section">
+        <div class="card card-primary">
+            <div class="card-header" style="border-bottom-color: #d0d0d0">
+                <h4>Hello</h4>
+                <div class="card-header-action">
+                    <a href="" class="btn btn-warning">Go Back</a>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary"><b>Create</b></button>
-        </x-admin.form>
-    </x-admin.card>
-</x-admin.main-content>
+            <div class="card-body">
+                <form action=""> 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="form-select form-control" name="" id="">
+                                    <option value="">Blog</option>
+                                    <option value="">Book</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><b>create</b></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

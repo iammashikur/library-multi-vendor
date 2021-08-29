@@ -5,17 +5,22 @@
 
 @section('content')
 
-<x-admin.main-content>
-    <x-admin.card heading='this is taile'>
-        <x-slot name='action'>
-            <x-admin.link-btn href="{{ route('admin.category.create') }}">Create Category</x-link-btn>
-        </x-slot>
-
-        <x-admin.form action="" method="">
-            <x-admin.form-input lable='hello' type='text'/>
-        </x-admin.form>
-
-    </x-admin.card>
-</x-admin.main-content>
+<div class="main-content">
+    <div class="section">
+        <div class="card card-primary">
+            <div class="card-header" style="border-bottom-color: #d0d0d0">
+                <h4>Categories</h4>
+                <div class="card-header-action">
+                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
+                        <b>Create Category</b>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
