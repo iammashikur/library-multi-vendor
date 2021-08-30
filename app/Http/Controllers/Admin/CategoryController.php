@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\DataTables\UsersDataTable;
 
 class CategoryController extends Controller
 {
@@ -12,9 +16,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CategoryDataTable $dataTable)
     {
-        return view('admin.category_all');
+        return $dataTable->render('admin.category_all');
     }
 
     /**
@@ -33,9 +37,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request, Category $category)
     {
-        //
+        $category->create($request->validated());
+        toast('Category Created!','success')->width('300px')->padding('10px');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -55,9 +61,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category_update', compact('category'));
     }
 
     /**
@@ -67,9 +73,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $category->create($request->validated());
+        toast('Category Updated!','success')->width('300px')->padding('10px');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -78,8 +86,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }

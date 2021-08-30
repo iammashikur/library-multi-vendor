@@ -4,17 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
     <title>{{ @$page_title }}</title>
     @include('admin.partials.styles')
 </head>
-
-
 <body>
-
-
-
-
     <div class="loader"></div>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
@@ -35,7 +30,6 @@
 
         </div>
     </div>
-
 
     @include('admin.partials.scripts')
 </body>
