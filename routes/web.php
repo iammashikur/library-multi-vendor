@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], function(){
   // Dashboard Route
   Route::get('/dashboard', [DashboardController::class, 'Dashboard'])->name('dashboard');
 

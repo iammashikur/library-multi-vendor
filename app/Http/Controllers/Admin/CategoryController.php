@@ -6,11 +6,15 @@ use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use App\DataTables\UsersDataTable;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
