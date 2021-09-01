@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
   // Category Routes
   Route::resource('/category', CategoryController::class);
 
+  // Post Rotues
+  Route::resource('/blog', BlogController::class);
 
 
 
@@ -29,6 +32,7 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
 
 // Route::get('/dashboard', [DashboardController::class, 'Dashboard']);
 // Route::get('/settings', [DashboardController::class, 'Settings']);  
+
 });
 
 

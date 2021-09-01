@@ -12,10 +12,18 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
-            <li class="dropdown {{ MenuActive('dashboard', 2) }}">
+            @hasanyrole('admin|manager|writer')
+            <li class="dropdown {{ MenuActive('blog', 2) }}">
+                <a href="{{ route('admin.blog.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Blog</span></a>
+            </li>
+            @endhasanyrole
+
+            <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Category</span></a>
             </li>
+
 
             <li class="dropdown {{ MenuActive('settings', 1) }}">
                 <a href="{{ url('/settings') }}" class="nav-link"><i
