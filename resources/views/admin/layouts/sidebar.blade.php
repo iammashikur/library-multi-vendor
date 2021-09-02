@@ -19,6 +19,16 @@
             </li>
             @endhasanyrole
 
+            <li class="dropdown {{ MenuActive('library', 2) }}">
+                <a href="{{ route('admin.library.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Libaray Setting</span></a>
+            </li>
+
+            <li class="dropdown {{ MenuActive('book', 2) }}">
+                <a href="{{ route('admin.book.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Book</span></a>
+            </li>
+
             <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Category</span></a>

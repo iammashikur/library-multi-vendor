@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\LibraryController;
+use App\Http\Controllers\Admin\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,12 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
 
   // Post Rotues
   Route::resource('/blog', BlogController::class);
+
+  // Library Routes
+  Route::resource('/library', LibraryController::class);
+
+  // Books Routes
+  Route::resource('/book', BookController::class);
 
 
 

@@ -17,6 +17,11 @@ class BlogController extends Controller
     // useing image trait
     use ImageTrait;
 
+    public function __construct()
+    {
+        $this->middleware(['role:admin|writer|manager']);
+    }
+
     /**
      * Display a listing of the resource.
      *
