@@ -35,4 +35,17 @@ class Book extends Model
             $data->slug = make_slug($data->title);
         });
     }
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function library()
+    {
+        return $this->belongsTo(Library::class);
+    }
+
+
 }

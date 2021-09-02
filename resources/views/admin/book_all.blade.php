@@ -13,12 +13,12 @@
                 <h4>All Books</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.book.create') }}" class="btn btn-primary">
-                        <b>Create Category</b>
+                        <b>Create Book</b>
                     </a>
                 </div>
             </div>
             <div class="card-body">
-                {{-- {{$dataTable->table()}} --}}
+                {{$dataTable->table()}}
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
 @endsection
 
 @push('scripts')
-    {{-- {{$dataTable->scripts()}} --}}
+    {{$dataTable->scripts()}}
     {{-- this script will help to delete a entry --}}
     @include('admin.partials.sweetalert-delete');
 @endpush

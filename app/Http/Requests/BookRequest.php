@@ -23,14 +23,33 @@ class BookRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'category_id' => ['required', 'integer'],
-            'cover_image' => ['required'],
-            'title'       => ['required','max:200'],
-            'description' => ['required','max:500'],
-            'num_of_page' => ['sometimes', 'integer'],
-            'publisher'   => ['sometimes'],
-            'writer'      => ['sometimes'],
-        ];
+        switch ($this->getMethod()) {
+            case 'PUT':
+                return [
+                    'category_id' => ['required', 'integer'],
+                    'cover_image' => ['sometimes', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
+                    'title'       => ['required','max:200'],
+                    'description' => ['required','max:500'],
+                    'price'       => ['required', 'integer'],
+                    'num_of_page' => ['sometimes', 'integer'],
+                    'publisher'   => ['sometimes'],
+                    'writer'      => ['sometimes'],
+                ];
+                break;
+            
+            default:
+                return [
+                    'category_id' => ['required', 'integer'],
+                    'cover_image' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
+                    'title'       => ['required','max:200'],
+                    'description' => ['required','max:500'],
+                    'price'       => ['required', 'integer'],
+                    'num_of_page' => ['sometimes', 'integer'],
+                    'publisher'   => ['sometimes'],
+                    'writer'      => ['sometimes'],
+                ];
+                break;
+        }
+        
     }
 }

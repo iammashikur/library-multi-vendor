@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use File;
 class BookController extends Controller
 {
     use ImageTrait;
@@ -52,6 +52,7 @@ class BookController extends Controller
         $book->category_id = $request->category_id;
         $book->cover_image = $imagePath;
         $book->title       = $request->title;
+        $book->price       = $request->price;
         $book->description = $request->description;
         $book->writer      = $request->writer;
         $book->num_of_page = $request->num_of_page;
@@ -59,6 +60,8 @@ class BookController extends Controller
         $book->tags        = json_encode($request->tags);
         $request->status ? $request->status = 1 : 0;
         $book->save();
+        toast('Book Created!','success')->width('300px')->padding('10px');
+        return redirect()->route('admin.book.index');
  
     }
 
@@ -81,7 +84,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $categories = Category::where('type', 1)->get();
+        return view('admin.book_update', compact('book', 'categories'));
     }
 
     /**
@@ -91,9 +95,31 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
-        //
+        if($request->hasFile('cover_image')){
+            /** Deleteing previous image */
+            File::delete(public_path("/uploads/images/$book->cover_image"));
+            /** Save image on dir */
+            $imagePath = $this->MakeImage($request, 'cover_image', public_path('/uploads/images/'));
+            $book->cover_image = $imagePath;
+        }
+
+         /** Save request data to db */
+         $book->user_id     = Auth::id();
+         $book->library_id  = Auth::user()->library->id;
+         $book->category_id = $request->category_id;
+         $book->title       = $request->title;
+         $book->price       = $request->price;
+         $book->description = $request->description;
+         $book->writer      = $request->writer;
+         $book->num_of_page = $request->num_of_page;
+         $book->publisher   = $request->publisher;
+         $book->tags        = json_encode($request->tags);
+         $request->status ? $request->status = 1 : 0;
+         $book->save();
+         toast('Book Updated!','success')->width('300px')->padding('10px');
+        return redirect()->route('admin.book.index');
     }
 
     /**
@@ -104,6 +130,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        File::delete(public_path("/uploads/images/$book->cover_image"));
+        $book->delete();
     }
 }

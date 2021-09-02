@@ -21,7 +21,30 @@ class BookDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'book.action');
+            ->addColumn('image', function($image){
+                return '<img class="img-fluid" src="'.asset("/uploads/images/$image->cover_image").'" alt="">';
+            })
+            ->addColumn('Library', function($library){
+                return $library->library->name;
+            })
+            ->addColumn('Category', function($category){
+                return $category->category->name;
+            })
+            ->addColumn('Status', function($status){
+                if($status->status == 1){
+                    $data = '<div class="badge btn-success">Active</div>';
+                }else{
+                    $data = '<div class="badge btn-danger">Desabled</div>';
+                }
+                return $data;
+            })
+            ->addColumn('action', function($action){
+                return '<a class="btn-sm btn-primary" href="'.route('admin.book.edit', $action->id).'"><i class="far fa-edit"></i></a> 
+                        <a class="btn-sm btn-danger delete" href="'.route('admin.book.destroy', $action->id).'"><i class="far fa-trash-alt"></i></a>';
+            })
+            ->rawColumns(['image', 'Status', 'action'])
+            ;
+
     }
 
     /**
@@ -32,7 +55,7 @@ class BookDataTable extends DataTable
      */
     public function query(Book $model)
     {
-        return $model->newQuery();
+        return $model->with(['category', 'library'])->newQuery();
     }
 
     /**
@@ -46,15 +69,9 @@ class BookDataTable extends DataTable
                     ->setTableId('book-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->scrollX(true)
+                    ->orderBy(0);
+                    
     }
 
     /**
@@ -65,15 +82,18 @@ class BookDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id')->visible(false),
+            Column::make('image')->width('100')->addClass('text-center'),
+            Column::make('title')->width('250'),
+            Column::make('Category', 'category.name')->width('100'),
+            Column::make('Library', 'library.name')->width(250),
+            Column::make('price')->width('50'),
+            Column::make('Status', 'status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(100)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

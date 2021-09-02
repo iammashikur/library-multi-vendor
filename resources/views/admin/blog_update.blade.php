@@ -123,7 +123,6 @@
 <script src="{{ url('assets/admin/js/page/ckeditor.js') }}"></script>
 
 <script>
-    // $(".inputtags").tagsinput();
     $(".inputtags").val();
 </script>
 @endpush
