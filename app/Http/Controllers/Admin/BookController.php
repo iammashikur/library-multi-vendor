@@ -53,6 +53,7 @@ class BookController extends Controller
         $book->cover_image = $imagePath;
         $book->title       = $request->title;
         $book->price       = $request->price;
+        $book->stock       = $request->stock;
         $book->description = $request->description;
         $book->writer      = $request->writer;
         $book->num_of_page = $request->num_of_page;
@@ -111,6 +112,7 @@ class BookController extends Controller
          $book->category_id = $request->category_id;
          $book->title       = $request->title;
          $book->price       = $request->price;
+         $book->stock       = $request->stock;
          $book->description = $request->description;
          $book->writer      = $request->writer;
          $book->num_of_page = $request->num_of_page;

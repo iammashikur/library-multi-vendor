@@ -38,11 +38,17 @@ class BookDataTable extends DataTable
                 }
                 return $data;
             })
+            ->addColumn('Stock', function($stock){
+                if($stock->stock <= 5){
+                    $data = '<div class="badge btn-danger">'.$stock->stock.'</div>';
+                }
+                return $data;
+            })
             ->addColumn('action', function($action){
                 return '<a class="btn-sm btn-primary" href="'.route('admin.book.edit', $action->id).'"><i class="far fa-edit"></i></a> 
                         <a class="btn-sm btn-danger delete" href="'.route('admin.book.destroy', $action->id).'"><i class="far fa-trash-alt"></i></a>';
             })
-            ->rawColumns(['image', 'Status', 'action'])
+            ->rawColumns(['image', 'Status','stock'. 'action'])
             ;
 
     }
@@ -88,6 +94,7 @@ class BookDataTable extends DataTable
             Column::make('Category', 'category.name')->width('100'),
             Column::make('Library', 'library.name')->width(250),
             Column::make('price')->width('50'),
+            Column::make('Stock', 'stock')->width('50'),
             Column::make('Status', 'status'),
             Column::computed('action')
                   ->exportable(false)
