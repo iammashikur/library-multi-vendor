@@ -35,6 +35,7 @@ class BookRequest extends FormRequest
                     'num_of_page' => ['sometimes', 'integer'],
                     'publisher'   => ['sometimes'],
                     'writer'      => ['sometimes'],
+                    'status'      => ['sometimes'],
                 ];
                 break;
             
@@ -49,6 +50,7 @@ class BookRequest extends FormRequest
                     'num_of_page' => ['sometimes', 'integer'],
                     'publisher'   => ['sometimes'],
                     'writer'      => ['sometimes'],
+                    'status'      => ['sometimes'],
                 ];
                 break;
         }

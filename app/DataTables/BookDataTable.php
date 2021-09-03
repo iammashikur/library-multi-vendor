@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -41,6 +42,8 @@ class BookDataTable extends DataTable
             ->addColumn('Stock', function($stock){
                 if($stock->stock <= 5){
                     $data = '<div class="badge btn-danger">'.$stock->stock.'</div>';
+                }else{
+                    $data = $stock->stock;
                 }
                 return $data;
             })
@@ -48,8 +51,7 @@ class BookDataTable extends DataTable
                 return '<a class="btn-sm btn-primary" href="'.route('admin.book.edit', $action->id).'"><i class="far fa-edit"></i></a> 
                         <a class="btn-sm btn-danger delete" href="'.route('admin.book.destroy', $action->id).'"><i class="far fa-trash-alt"></i></a>';
             })
-            ->rawColumns(['image', 'Status','stock'. 'action'])
-            ;
+            ->rawColumns(['image', 'Status','Stock', 'action']);
 
     }
 
@@ -61,7 +63,10 @@ class BookDataTable extends DataTable
      */
     public function query(Book $model)
     {
-        return $model->with(['category', 'library'])->newQuery();
+        return $model
+            ->with(['category', 'library'])
+            ->where('user_id', Auth::id())
+            ->newQuery();
     }
 
     /**
