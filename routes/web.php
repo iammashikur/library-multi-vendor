@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\LibraryController;
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,10 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
 
   // Books Routes
   Route::resource('/book', BookController::class);
+
+  // Books Routes
+  Route::post('/order/change-status', [OrderController::class, 'changeStatus'])->name('order.status');
+  Route::resource('/order', OrderController::class);
 
 
 

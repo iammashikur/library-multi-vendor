@@ -29,6 +29,11 @@
                         data-feather="monitor"></i><span>Book</span></a>
             </li>
 
+            <li class="dropdown {{ MenuActive('order', 2) }}">
+                <a href="{{ route('admin.order.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Orders</span></a>
+            </li>
+
             <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Category</span></a>
