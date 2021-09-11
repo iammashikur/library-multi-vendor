@@ -17,8 +17,8 @@ class OrderReportController extends Controller
      */
     public function index(OrderReportDataTable $dataTable, Request $request)
     {
-   
-        return $dataTable->render('admin.order_report_all');
+        $totalSub = Order::whereBetween('created_at', [$request->start_date, $request->end_date])->sum('total_price');
+        return $dataTable->render('admin.order_report_all', compact('totalSub'));
 
     }
 

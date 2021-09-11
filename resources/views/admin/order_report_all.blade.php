@@ -44,7 +44,8 @@
                 </div>
             </div>
             <div class="card-body">
-                {{$dataTable->table()}}
+                {{$dataTable->table([], true)}}
+                
             </div>
         </div>
     </div>
@@ -63,5 +64,6 @@
     <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
     {{-- <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script> --}}
 
+ 
 
 @endpush

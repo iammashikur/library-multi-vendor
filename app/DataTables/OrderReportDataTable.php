@@ -82,10 +82,19 @@ class OrderReportDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(0)
+                    ->parameters([
+                        'footerCallback' => 'function( tfoot, data, start, end, display ) {
+                            var sum = [];
+                            $.each(data, function(index, value){
+                                sum.push(value.total_price)
+                            });
+                            $(tfoot).find("th").eq(3).html( "Total: " + eval(sum.join("+")));
+                          }',
+                    ])
                     ->buttons(
-                        Button::make('copy'),
-                        Button::make('print'),
-                        Button::make('excel')
+                        Button::make('copy')->footer(true),
+                        Button::make('print')->footer(true),
+                        Button::make('excel')->footer(true)
                     ); 
          
     }
@@ -103,7 +112,7 @@ class OrderReportDataTable extends DataTable
             Column::make('customer', 'user.name'),
             Column::make('phone', 'user.phone'),
             // Column::make('items'),
-            Column::make('total_price'),
+            Column::make('total_price')->addClass('sum'),
             Column::make('Status', 'status'),
             Column::computed('action')
                   ->exportable(false)
