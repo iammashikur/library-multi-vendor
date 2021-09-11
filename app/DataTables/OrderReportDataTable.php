@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Order;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class OrderDataTable extends DataTable
+class OrderReportDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,13 +23,15 @@ class OrderDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('items', function($items){
-                $data = '';
-                foreach($items->orderItems as $item){
-                    $data .= $item->book->title.'<br>';
-                }
+            ->filter(function($search){
+                $search->whereBetween('created_at', [request('start_date'), request('end_date')])->get();
                 
-                return $data;
+            })
+            ->addColumn('customer', function($customer){
+                return $customer->user->name;
+            })
+            ->addColumn('phone', function($phone){
+                return $phone->user->phone;
             })
             ->addColumn('Status', function($status){
                 if($status->status == 0){
@@ -61,8 +64,9 @@ class OrderDataTable extends DataTable
         return $model
         ->where('library_id', Auth::user()->library->id)
         ->where('status', '!=', 1)
-        ->with('orderItems.book')
-        ->newQuery();
+        ->with('user')
+        ->newQuery();  
+        
     }
 
     /**
@@ -76,7 +80,14 @@ class OrderDataTable extends DataTable
                     ->setTableId('order-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->orderBy(0);        
+                    ->dom('Bfrtip')
+                    ->orderBy(0)
+                    ->buttons(
+                        Button::make('copy'),
+                        Button::make('print'),
+                        Button::make('excel')
+                    ); 
+         
     }
 
     /**
@@ -87,18 +98,18 @@ class OrderDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('id')->visible(false)->printable(false),
             Column::make('invoice'),
-            Column::make('items'),
+            Column::make('customer', 'user.name'),
+            Column::make('phone', 'user.phone'),
+            // Column::make('items'),
             Column::make('total_price'),
             Column::make('Status', 'status'),
-
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(100)
                   ->addClass('text-center'),
-
         ];
     }
 
