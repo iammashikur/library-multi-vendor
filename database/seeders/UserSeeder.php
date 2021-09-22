@@ -20,9 +20,6 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'admin',
             'phone' => '10000000000',
-            'devetion_id' => 0,
-            'district_id' => 0,
-            'address'=> 'n/a',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $admin->assignRole('admin');
@@ -30,9 +27,6 @@ class UserSeeder extends Seeder
         $manager = User::create([
             'name' => 'manager',
             'phone' => '20000000000',
-            'devetion_id' => 0,
-            'district_id' => 0,
-            'address'=> 'n/a',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $manager->assignRole('manager');
@@ -40,9 +34,6 @@ class UserSeeder extends Seeder
         $volunteer = User::create([
             'name' => 'volunteer',
             'phone' => '30000000000',
-            'devetion_id' => 0,
-            'district_id' => 0,
-            'address'=> 'n/a',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $volunteer->assignRole('volunteer');
@@ -50,9 +41,6 @@ class UserSeeder extends Seeder
         $librarian = User::create([
             'name' => 'librarian',
             'phone' => '40000000000',
-            'devetion_id' => 0,
-            'district_id' => 0,
-            'address'=> 'n/a',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $librarian->assignRole('librarian');
@@ -60,9 +48,6 @@ class UserSeeder extends Seeder
         $writer = User::create([
             'name' => 'writer',
             'phone' => '50000000000',
-            'devetion_id' => 0,
-            'district_id' => 0,
-            'address'=> 'n/a',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $writer->assignRole('writer');
