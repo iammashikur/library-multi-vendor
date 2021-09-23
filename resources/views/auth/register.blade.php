@@ -54,35 +54,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('devetion_id') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>
 
                             <div class="col-md-6">
-                                <select name="devetion_id" id="">
-                                    <option value="1">dhaka</option>
-                                    <option value="2">gazipur</option>
-                                    <option value="">barisahl</option>
+                                <select name="type" id="" class="form-control">
+                                    <option value="personal">Personal</option>
+                                    <option value="librarian">Librarian</option>
+                                    <option value="writer">Writer</option>
                                 </select>
+                                @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('district_id') }}</label>
-
-                            <div class="col-md-6">
-                                <select name="district_id" id="">
-                                    <option value="1">dhaka</option>
-                                    <option value="2">gazipur</option>
-                                    <option value="">barisahl</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
-
-                            <input type="text" name="address" >
-                        </div>
-
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
