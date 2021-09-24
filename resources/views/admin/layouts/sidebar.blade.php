@@ -39,6 +39,11 @@
                         data-feather="monitor"></i><span>Order Report</span></a>
             </li>
 
+            <li class="dropdown {{ MenuActive('pdf', 2) }}">
+                <a href="{{ route('admin.pdf.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Pdf</span></a>
+            </li>
+
             <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Category</span></a>

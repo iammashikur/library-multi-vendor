@@ -2,15 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\Book;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Pdf;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class BookDataTable extends DataTable
+class PdfDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -23,13 +22,7 @@ class BookDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('image', function($image){
-                return '<img class="img-fluid" src="'.asset("/uploads/images/$image->cover_image").'" alt="">';
-            })
-            ->addColumn('Library', function($library){
-                return $library->library->name;
-            })
-            ->addColumn('Category', function($category){
-                return $category->category->name;
+                return '<img class="img-fluid" width="100" src="'.asset("/uploads/images/$image->image").'" alt="">';
             })
             ->addColumn('Status', function($status){
                 if($status->status == 1){
@@ -39,34 +32,22 @@ class BookDataTable extends DataTable
                 }
                 return $data;
             })
-            ->addColumn('Stock', function($stock){
-                if($stock->stock <= 5){
-                    $data = '<div class="badge btn-danger">'.$stock->stock.'</div>';
-                }else{
-                    $data = $stock->stock;
-                }
-                return $data;
-            })
             ->addColumn('action', function($action){
-                return '<a class="btn-sm btn-primary" href="'.route('admin.book.edit', $action->id).'"><i class="far fa-edit"></i></a>
-                        <a class="btn-sm btn-danger delete" href="'.route('admin.book.destroy', $action->id).'"><i class="far fa-trash-alt"></i></a>';
+                return '<a class="btn-sm btn-primary" href="'.route('admin.pdf.edit', $action->id).'"><i class="far fa-edit"></i></a>
+                        <a class="btn-sm btn-danger delete" href="'.route('admin.pdf.destroy', $action->id).'"><i class="far fa-trash-alt"></i></a>';
             })
-            ->rawColumns(['image', 'Status','Stock', 'action']);
-
+            ->rawColumns(['Status', 'action', 'image']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Book $model
+     * @param \App\Models\Pdf $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Book $model)
+    public function query(Pdf $model)
     {
-        return $model
-            ->with(['category', 'library'])
-            ->where('user_id', Auth::id())
-            ->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -77,12 +58,18 @@ class BookDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('book-table')
+                    ->setTableId('pdf-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->scrollX(true)
                     ->orderBy(0);
-
+                    // ->dom('Bfrtip')
+                    // ->buttons(
+                    //     Button::make('create'),
+                    //     Button::make('export'),
+                    //     Button::make('print'),
+                    //     Button::make('reset'),
+                    //     Button::make('reload')
+                    // );
     }
 
     /**
@@ -94,13 +81,9 @@ class BookDataTable extends DataTable
     {
         return [
             Column::make('id')->visible(false),
-            Column::make('image')->width('100')->addClass('text-center'),
-            Column::make('title')->width('250'),
-            Column::make('Category', 'category.name')->width('100'),
-            Column::make('Library', 'library.name')->width(250),
-            Column::make('price')->width('50'),
-            Column::make('Stock', 'stock')->width('50'),
-            Column::make('Status', 'status'),
+            Column::make('image'),
+            Column::make('title'),
+            Column::make('Status','status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -116,6 +99,6 @@ class BookDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Book_' . date('YmdHis');
+        return 'Pdf_' . date('YmdHis');
     }
 }
