@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderReportController;
 use App\Models\OrderReport;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// Home Page
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
+
+// Blog
+Route::get('/blogs', [App\Http\Controllers\FrontendController::class, 'blogs'])->name('blogs');
+Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'blog_show'])->name('blog_show');
+
+// Library
+Route::get('/libraries', [App\Http\Controllers\FrontendController::class, 'search_libraries'])->name('search_libraries');
+Route::get('/library/{id}', [App\Http\Controllers\FrontendController::class, 'library_show'])->name('library_show');
+Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_show'])->name('book_show');
+
+// Cart
+Route::get('/cart/{uid}', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
+
+
+
+
 
 Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], function(){
   // Dashboard Route
@@ -51,7 +72,7 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
 
 
 // Route::get('/dashboard', [DashboardController::class, 'Dashboard']);
-// Route::get('/settings', [DashboardController::class, 'Settings']);  
+// Route::get('/settings', [DashboardController::class, 'Settings']);
 
 });
 
@@ -59,4 +80,4 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

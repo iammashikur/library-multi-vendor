@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Li Ador Noirrit Unicode';
+    src: url('LiAdorNoirritUnicode.eot');
+    src: url('LiAdorNoirritUnicode.eot?#iefix') format('embedded-opentype'),
+        url('LiAdorNoirritUnicode.woff2') format('woff2'),
+        url('LiAdorNoirritUnicode.woff') format('woff'),
+        url('LiAdorNoirritUnicode.ttf') format('truetype'),
+        url('LiAdorNoirritUnicode.svg#LiAdorNoirritUnicode') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
