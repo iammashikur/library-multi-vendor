@@ -29,6 +29,8 @@ class LibraryRequest extends FormRequest
             'division_id' => ['required', 'integer'],
             'city_id'     => ['required', 'integer'],
             'address'     => ['required'],
+            'logo'        => ['sometimes', 'image', 'max: 500'],
+            'banner'      => ['sometimes', 'image', 'max:500'],
             'description' => ['required'],
         ];
     }

@@ -21,6 +21,8 @@ class CreateLibrariesTable extends Migration
             $table->integer('division_id')->nullable();
             $table->integer('city_id')->nullable();
             $table->string('address')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('banner')->nullable();
             $table->text('description')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

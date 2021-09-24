@@ -22,14 +22,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.library.store') }}" method="POST"> 
+                <form action="{{ route('admin.library.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
                         <label for="name"><b>Library Name</b></label>
                         <input id="name" type="text" class="form-control" name="name" value="{{ @$library->name }}">
                     </div>
-        
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -62,11 +62,37 @@
                         <input id="address" type="text" class="form-control" name="address" value="{{ @$library->address }}">
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Logo</label>
+                                <input class="form-control" type="file" name="logo" id="">
+                                @if (isset($library->logo))
+                                <div class="image-view p-3">
+                                    <img width="80" src="{{ asset("uploads/images/$library->logo") }}" alt="">
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Banner</label>
+                                <input class="form-control" type="file" name="banner" id="">
+                                @if (isset($library->banner))
+                                <div class="image-view p-3">
+                                    <img width="80" src="{{ asset("uploads/images/$library->banner") }}" alt="">
+                                </div>
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="name"><b>Library Description</b></label>
                         <textarea name="description" id="" class="form-control">{{ @$library->description }}</textarea>
                     </div>
-                      
+
                     <button type="submit" class="btn btn-primary"><b>create</b></button>
                 </form>
             </div>
