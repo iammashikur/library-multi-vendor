@@ -1,21 +1,20 @@
 /*=== MEDIA QUERY ===*/
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900");
+@import url('https://fonts.googleapis.com/css2?family=Cuprum&display=swap');
 body {
   line-height: 1.5;
-  /* font-family: 'Li Ador Noirrit Unicode'; */
 }
 
-body{margin:0;background:#e6e7e8;font-family: 'Li Ador Noirrit Unicode';text-align:center}
+body{margin:0;background:#e6e7e8; font-family: 'Cuprum', 'Li Ador Noirrit Unicode',  sans-serif; text-align:center}
 
 p, li, input, select, button {
-  font-family: 'Li Ador Noirrit Unicode';
+  font-family: 'Cuprum', 'Li Ador Noirrit Unicode',  sans-serif;
   color: #666;
   font-size: 14px;
   font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Li Ador Noirrit Unicode';
+  font-family: 'Cuprum', 'Li Ador Noirrit Unicode',  sans-serif;
   font-weight: 600;
   color: #333;
 }

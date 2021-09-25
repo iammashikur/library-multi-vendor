@@ -34,10 +34,19 @@ Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'blo
 // Library
 Route::get('/libraries', [App\Http\Controllers\FrontendController::class, 'search_libraries'])->name('search_libraries');
 Route::get('/library/{id}', [App\Http\Controllers\FrontendController::class, 'library_show'])->name('library_show');
+
+
 Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_show'])->name('book_show');
 
 // Cart
 Route::get('/cart/{uid}', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
+
+
+
+// Location
+Route::get('/districts', [App\Http\Controllers\FrontendController::class, 'districts'])->name('districts');
+Route::get('/cities', [App\Http\Controllers\FrontendController::class, 'cities'])->name('cities');
+
 
 
 

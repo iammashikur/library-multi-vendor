@@ -48,38 +48,99 @@
                                             <form method="GET" action="{{route('search_libraries')}}">
                                                 <div class="form-row">
 
+                                                    @push('scripts')
+
+                                                    <script>
+                                                        $("#division").on('change', function(){
+                                                            var sel = $("#division").find(":selected").val();
+                                                            $.ajax({
+                                                            type: "GET",
+                                                            url: "{{ url('districts') }}?division_id=" + sel,
+                                                            success: function(res) {
+                                                                    if (res) {
+                                                                        $("#district").empty();
+                                                                        $("#district").append('<option>জেলা</option>');
+                                                                        $.each(res, function(key, value) {
+
+                                                                            $("#district").append('<option value="' + value.id + '">' + value.name +
+                                                                                '</option>');
+                                                                        });
+
+                                                                        $("#city").empty();
+                                                                        $("#city").append('<option>শহর</option>');
+
+                                                                        $('select').niceSelect('update');
+                                                                    }else{
+                                                                        $("#district").empty();
+                                                                        $("#district").append('<option>জেলা</option>');
+
+
+                                                                    }
+                                                                }
+                                                            });
+                                                        });
+
+                                                        $("#district").on('change input', function(){
+                                                            var sel = $("#district").find(":selected").val();
+                                                            $.ajax({
+                                                            type: "GET",
+                                                            url: "{{ url('cities') }}?district_id=" + sel,
+                                                            success: function(res) {
+                                                                    if (res) {
+                                                                        $("#city").empty();
+                                                                        $("#city").append('<option>শহর</option>');
+                                                                        $.each(res, function(key, value) {
+
+
+                                                                            $("#city").append('<option value="' + value.id + '">' + value.name +
+                                                                                '</option>');
+                                                                        });
+                                                                        $('select').niceSelect('update');
+                                                                    }else{
+
+                                                                        $("#city").empty();
+                                                                        $("#city").append('<option>শহর</option>');
+
+                                                                    }
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>
+
+                                                    @endpush
+
                                                     <div class="form-group col-md-3">
-                                                        <select class="w-100 form-control mt-lg-1 mt-md-2">
+                                                        <select class="w-100 form-control mt-lg-1 mt-md-2" id="division" name="division" required>
                                                             <option>বিভাগ</option>
-                                                            <option value="1">Top rated</option>
-                                                            <option value="2">Lowest Price</option>
-                                                            <option value="4">Highest Price</option>
+
+                                                            @foreach (App\Models\Division::get() as $division)
+                                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-md-3">
-                                                        <select class="w-100 form-control mt-lg-1 mt-md-2">
+
+
+                                                        {{-- <div id="sel">
+
+                                                        </div> --}}
+                                                        <select class="w-100 form-control mt-lg-1 mt-md-2" id="district" name="district" required>
+
                                                             <option>জেলা</option>
-                                                            <option value="1">Top rated</option>
-                                                            <option value="2">Lowest Price</option>
-                                                            <option value="4">Highest Price</option>
+
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-md-3">
-                                                        <select class="w-100 form-control mt-lg-1 mt-md-2">
+                                                        <select class="w-100 form-control mt-lg-1 mt-md-2" id="city" name="city" required>
                                                             <option>শহর</option>
-                                                            <option value="1">Top rated</option>
-                                                            <option value="2">Lowest Price</option>
-                                                            <option value="4">Highest Price</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-md-3 align-self-center">
                                                         <button type="submit" class="btn btn-primary w-100" style="border-radius: 30px;">
-
-                                                            <i class="fa fa-search    "></i>
-
+                                                            <i class="fa fa-search"></i>
                                                             এখনই খুঁজুন</button>
                                                     </div>
                                                 </div>
