@@ -191,7 +191,7 @@
                     transition: transform 1s;
                     padding: 5px;
                     border-radius: 5px;
-                    box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+                    box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
 
                 }
 
@@ -252,6 +252,16 @@
             </div>
 
             @endfor
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <div class="section-title">
+                        <h2>সবচেয়ে বেশি বিক্রি হওয়া বই</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+                    </div>
+                </div>
             </div>
 
 
