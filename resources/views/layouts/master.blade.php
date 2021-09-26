@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>বই বাজার</title>
+    <title>গ্রন্থ ঘর</title>
 
     <!-- FAVICON -->
     <link href="img/favicon.png" rel="shortcut icon">
@@ -22,6 +22,7 @@
 
     @include('layouts.menu')
     @yield('content')
+    @include('layouts.footer')
 
 @include('partials.scripts')
 
