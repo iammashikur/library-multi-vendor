@@ -167,6 +167,8 @@
 
     <section class="popular-deals section bg-gray">
         <div class="container">
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
@@ -175,163 +177,84 @@
                     </div>
                 </div>
             </div>
+
+
+
+            @push('style')
+
+            <style>
+
+
+
+                .book{
+                    background: #fff;
+                    transition: transform 1s;
+                    padding: 5px;
+                    border-radius: 5px;
+                    box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+
+                }
+
+                .book:hover{
+                    transform: perspective(800px) rotateY(20deg);
+                    transition: transform 1s scale(1.1);
+                    cursor: pointer;
+
+
+                }
+
+                .book-cover{
+
+                }
+
+                .book h1{
+
+                    margin-top: 10px;
+                    font-size: 20px;
+                    font-weight: 100;
+                }
+
+                .book h2{
+                    font-size: 16px
+                }
+
+            </style>
+
+            @endpush
+
             <div class="row">
-                <!-- offer 01 -->
-                <div class="col-lg-12">
-                    <div class="trending-ads-slide">
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-    <div class="product-item bg-light">
-        <div class="card">
-            <div class="thumb-content">
-                <!-- <div class="price">$200</div> -->
-                <a href="single.html">
-                    <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-                <ul class="list-inline product-meta">
-                    <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                    </li>
-                </ul>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                <div class="product-ratings">
-                    <ul class="list-inline">
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                @for ($i = 0; $i < 4; $i++)
+                <div class="col-md-3 col-6 mb-4">
 
 
+                   <a href="{{url('/book/1')}}">
+                     <div class="book">
+
+                         <img class="book-cover" src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/e895ab4704e4_127637.jpg" alt="" width="100%">
+                         <div class="book-info">
+                             <h1>
+                                     অপারেশন নীলাঞ্জনা (হার্ডকভার)
+                             </h1>
+                             <h2>
+                                     মুহম্মদ জাফর ইকবাল
+                             </h2>
+
+                             <p>
+                                 Price : 200 taka
+                             </p>
+
+                         </div>
 
                         </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-    <div class="product-item bg-light">
-        <div class="card">
-            <div class="thumb-content">
-                <!-- <div class="price">$200</div> -->
-                <a href="single.html">
-                    <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-                <ul class="list-inline product-meta">
-                    <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                    </li>
-                </ul>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                <div class="product-ratings">
-                    <ul class="list-inline">
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-    <div class="product-item bg-light">
-        <div class="card">
-            <div class="thumb-content">
-                <!-- <div class="price">$200</div> -->
-                <a href="single.html">
-                    <img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-                <ul class="list-inline product-meta">
-                    <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                    </li>
-                </ul>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                <div class="product-ratings">
-                    <ul class="list-inline">
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
-    <div class="product-item bg-light">
-        <div class="card">
-            <div class="thumb-content">
-                <!-- <div class="price">$200</div> -->
-                <a href="single.html">
-                    <img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-                <ul class="list-inline product-meta">
-                    <li class="list-inline-item">
-                        <a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                    </li>
-                </ul>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                <div class="product-ratings">
-                    <ul class="list-inline">
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
+                   </a>
 
 
             </div>
+
+            @endfor
+            </div>
+
+
         </div>
     </section>
 
