@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\LibraryController;
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\LibraryPaymentController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderReportController;
 use App\Http\Controllers\Admin\PdfController;
@@ -50,7 +51,9 @@ Route::get('/cities', [App\Http\Controllers\FrontendController::class, 'cities']
 
 
 
-
+/**
+ *  Admin Routes Starts here
+ */
 
 Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], function(){
   // Dashboard Route
@@ -75,8 +78,13 @@ Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], fun
   Route::post('/order-report/search', [OrderReportController::class, 'search'])->name('order-report.search');
   Route::resource('/order-report', OrderReportController::class);
 
-  // Order Routes
+  // admin pdf Routes
   Route::resource('/pdf', PdfController::class);
+
+  // Library Payment Routes
+  Route::resource('/library-payment', LibraryPaymentController::class);
+
+
 
 
 

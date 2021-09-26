@@ -44,6 +44,11 @@
                         data-feather="monitor"></i><span>Pdf</span></a>
             </li>
 
+            <li class="dropdown {{ MenuActive('pdf', 2) }}">
+                <a href="{{ route('admin.library-payment.index') }}" class="nav-link"><i
+                        data-feather="monitor"></i><span>Library Payments</span></a>
+            </li>
+
             <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Category</span></a>
