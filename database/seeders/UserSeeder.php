@@ -14,9 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
         // we will seed user with role
-
+        // and some basic users
         $admin = User::create([
             'name' => 'admin',
             'phone' => '10000000000',
@@ -51,5 +50,19 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
         $writer->assignRole('writer');
+
+        /** Basic users */
+
+        $basicUserOne = User::create([
+            'name' => 'basic user one',
+            'phone' => '60000000000',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
+
+        $basicUserTwo = User::create([
+            'name' => 'basic user two',
+            'phone' => '70000000000',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
     }
 }
