@@ -62,7 +62,7 @@
                                 <p>Category : <i>উপন্যাস</i></p>
 
 
-                                <h1>৳ {{$book->price}}}</h1>
+                                <h1>৳ {{$book->price}}</h1>
 
 
                                 <a class="btn btn-primary" href="{{route('cart_add', ['id' => $book->id])}}" role="button">
