@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Library;
@@ -44,7 +45,20 @@ class FrontendController extends Controller
 
     public function book_show(Request $request){
 
-        return view('book_show');
+        $book = Book::find($request->id);
+        return view('book_show',compact('book'));
+
+    }
+
+    public function cart_show(Request $request){
+
+        return view('cart_show');
+
+    }
+
+    public function cart_add(Request $request){
+
+        return view('cart_add');
 
     }
 

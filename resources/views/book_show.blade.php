@@ -48,7 +48,7 @@
                         <div class="col-md-4 col-12">
 
                             <div class="p-md-5 p-4">
-                                <img src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/e895ab4704e4_127637.jpg" alt="" class="w-100 ">
+                                <img src="{{$book->cover_image}}" alt="" class="w-100 ">
                             </div>
 
 
@@ -57,15 +57,15 @@
 
                         <div class="col-md-5 col-12">
                             <div class="book-details mt-md-5 mt-0 pl-4 p-md-0 mb-5">
-                                <h1>অপারেশন নীলাঞ্জনা (হার্ডকভার)</h1>
+                                <h1>{{$book->title}}</h1>
                                 <p>By <strong>মুহম্মদ জাফর ইকবাল</strong></p>
                                 <p>Category : <i>উপন্যাস</i></p>
 
 
-                                <h1>৳ 200</h1>
+                                <h1>৳ {{$book->price}}}</h1>
 
 
-                                <a name="" id="" class="btn btn-primary" href="#" role="button">
+                                <a class="btn btn-primary" href="{{route('cart_add', ['id' => $book->id])}}" role="button">
                                     <i class="fas fa-cart-plus    "></i>
                                     কার্টে যোগ করুন</a>
                             </div>

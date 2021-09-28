@@ -22,11 +22,11 @@ class LibraryFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 4,
+            'user_id' => 1,
             'name' => 'sk library',
-            'district_id' => 6,
-            'division_id' => 22,
-            'city_id' => 131,
+            'district_id' => 1,
+            'division_id' => 1,
+            'city_id' => 1,
             'address' => 'Dhaka, Mohammad-pur',
             'logo' => 'https://images-platform.99static.com//GRmtYhUNKV2Ugv_21gbqiWplrf4=/711x1150:1347x1784/fit-in/500x500/projects-files/89/8984/898485/9a8ba799-91b0-463b-a84a-087c8afe347b.jpg',
             'banner' => 'https://en.ricest.ac.ir/wp-content/uploads/2018/02/library-banner.jpg',

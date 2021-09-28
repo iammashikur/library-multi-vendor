@@ -42,6 +42,8 @@ Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_
 // Cart
 Route::get('/cart/{uid}', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
 
+Route::get('/addtocart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_add'])->name('cart_add');
+
 
 
 // Location
