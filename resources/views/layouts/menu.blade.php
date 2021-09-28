@@ -8,7 +8,9 @@
         <div class="container">
           <!-- logo -->
           <strong class="logo">
-              <img src="{{url('/')}}/assets/images/log.png" alt="" style="height: 60px;">
+              <a href="{{url('/')}}">
+                <img src="{{url('/')}}/assets/images/log.png" alt="" style="height: 60px;">
+              </a>
           </strong>
           <!-- open nav mobile -->
 
@@ -25,24 +27,78 @@
           <!-- // search -->
           <nav class="nav-content">
             <!-- nav -->
+
+            @if (Auth::check())
+
+
             <ul class="nav-content-list">
-              <li class="nav-content-item account-login">
-                <label class="open-menu-login-account" for="open-menu-login-account" style="margin-top: 10px">
+                <li class="nav-content-item account-login">
+                  <label class="open-menu-login-account" for="open-menu-login-account" style="margin-top: 10px">
 
-                  <input class="input-menu" id="open-menu-login-account" type="checkbox" name="menu" />
+                    <input class="input-menu" id="open-menu-login-account" type="checkbox" name="menu" />
 
-                  <i class="fas fa-user-circle" style="font-size:20px"></i>
+                    <i class="fas fa-user-circle" style="font-size:20px"></i>
 
-                  <span class="login-text">Hello, Sign in <strong>Create Account</strong></span> <span class="item-arrow"></span>
 
-                  <!-- submenu -->
-                  <ul class="login-list">
-                    <li class="login-list-item"><a href="#">My account</a></li>
-                    <li class="login-list-item"><a href="#">Create account</a></li>
-                    <li class="login-list-item"><a href="#">logout</a></li>
-                </label>
-              </li>
-            </ul>
+                    <span class="ml-1"> {{Auth::user()->name}}</span>
+
+                    <!-- submenu -->
+                    <ul class="login-list text-left">
+                      <li class="login-list-item"><a > <i class="fas fa-user-circle    "></i> My account</a></li>
+
+
+
+
+
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
+
+
+
+                        <li class="login-list-item"><a href="" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt    "></i> Logout</a></li>
+
+
+                  </label>
+                </li>
+              </ul>
+
+
+              @else
+
+
+              <ul class="nav-content-list">
+                <li class="nav-content-item account-login">
+                  <label class="open-menu-login-account" for="open-menu-login-account" style="margin-top: 10px">
+
+                    <input class="input-menu" id="open-menu-login-account" type="checkbox" name="menu" />
+
+                    <i class="fas fa-user-circle" style="font-size:20px"></i>
+
+                    <span class="login-text">Hello, Sign in <strong>Create Account</strong></span> <span class="item-arrow"></span>
+
+                    <!-- submenu -->
+                    <ul class="login-list text-left">
+                      <li class="login-list-item"><a  href="{{ url('/login') }}"> Login</a></li>
+                      <li class="login-list-item"><a  href="{{ url('/register') }}">Create account</a></li>
+
+                  </label>
+                </li>
+              </ul>
+
+            @endif
+
+
+
+
+
+
+
+
+
 
             <li class="nav-content-item"><a class="nav-content-link" href="#"><i class="fas fa-shopping-cart"></i></a></li>
             <!-- call to action -->
@@ -81,11 +137,11 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="{{url('/books')}}">বই</a>
+                      <a class="nav-link" href="{{url('/book/1')}}">বই</a>
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="{{url('/libraries')}}">সব লাইব্রেরি</a>
+                      <a class="nav-link" href="{{url('/library/1')}}">সব লাইব্রেরি</a>
                   </li>
 
 
