@@ -56,6 +56,9 @@
                         </div>
 
                         <div class="col-md-5 col-12">
+
+
+
                             <div class="book-details mt-md-5 mt-0 pl-4 p-md-0 mb-5">
                                 <h1>{{$book->title}}</h1>
                                 <p>By <strong>মুহম্মদ জাফর ইকবাল</strong></p>
