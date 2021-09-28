@@ -223,7 +223,7 @@
             @endpush
 
             <div class="row">
-                @foreach (App\Models\Book::get() as $item)
+                @foreach (App\Models\Book::limit(4)->get() as $item)
 
                 <div class="col-md-3 col-6 mb-4">
 

@@ -40,9 +40,16 @@ Route::get('/library/{id}', [App\Http\Controllers\FrontendController::class, 'li
 Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_show'])->name('book_show');
 
 // Cart
-Route::get('/cart/{uid}', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
+Route::get('/mycart', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
 
-Route::get('/addtocart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_add'])->name('cart_add');
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/addtocart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_add'])->name('cart_add');
+    Route::get('/removecart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_remove'])->name('cart_remove');
+
+
+});
+
 
 
 

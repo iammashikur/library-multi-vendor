@@ -100,7 +100,17 @@
 
 
 
-            <li class="nav-content-item"><a class="nav-content-link" href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            <li class="nav-content-item"><a class="nav-content-link" href="{{route('cart_show')}}"><i class="fas fa-shopping-cart"></i>
+
+                @auth
+
+                <span class="badge badge-primary badge-xs" style="font-size: 10px;
+                top: 4px;
+                position: absolute;">{{App\Models\Cart::where('user_id', Auth::user()->id)->count()}}</span>
+
+                @endauth
+
+                </a></li>
             <!-- call to action -->
             <li class="nav-content-item d-md-none d-block">
                 <a class="nav-content-link" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId">

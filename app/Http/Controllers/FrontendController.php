@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Cart;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Library;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -52,15 +54,39 @@ class FrontendController extends Controller
 
     public function cart_show(Request $request){
 
-        return view('cart_show');
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('cart_show',compact('cart'));
 
     }
 
     public function cart_add(Request $request){
 
-        return view('cart_add');
+
+        $cart = new Cart();
+        $cart->book_id = $request->id;
+        $cart->user_id = Auth::user()->id;
+        $cart->status = 0;
+        $cart->save();
+
+
+        toast('Book added to cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
+
+        return redirect()->back();
 
     }
+
+    public function cart_remove(Request $request){
+
+
+        Cart::find($request->id)->delete();
+
+        toast('Item removed from cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
+
+        return redirect()->back();
+
+    }
+
+
 
 
     public function districts(Request $request){

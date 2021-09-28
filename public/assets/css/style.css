@@ -3139,3 +3139,8 @@ form textarea {
     border-radius: 15px;
     text-align: left;
 }
+
+
+.swal2-shown .nice-select{
+display: none;
+}
