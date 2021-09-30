@@ -138,7 +138,6 @@ class FrontendController extends Controller
 
         foreach($CartLibrary->get() as $item){
 
-
             $cart = Cart::where([
                 'user_id' => Auth::user()->id,
                 'library_id' => $item->id,
@@ -147,9 +146,7 @@ class FrontendController extends Controller
             $total = 0;
 
             foreach($cart as $books){
-
                 $total += \App\Models\Book::find($books->book_id)->price * $books->quantity;
-
             }
 
             $order = new Order();
@@ -161,7 +158,6 @@ class FrontendController extends Controller
             $order->save();
 
             foreach($cart as $books){
-
                 $order_item = new OrderItem();
                 $order_item->order_id =  $order->id;
                 $order_item->book_id =  $books->book_id;
@@ -169,12 +165,7 @@ class FrontendController extends Controller
                 $order_item->unit_price = \App\Models\Book::find($books->book_id)->price;
                 $order_item->sum_price  = \App\Models\Book::find($books->book_id)->price * $books->quantity;
                 $order_item->save();
-
             }
-
-
-
-
 
         }
 
