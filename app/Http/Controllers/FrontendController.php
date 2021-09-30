@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Library;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,14 +63,35 @@ class FrontendController extends Controller
     public function cart_add(Request $request){
 
 
-        $cart = new Cart();
-        $cart->book_id = $request->id;
-        $cart->user_id = Auth::user()->id;
-        $cart->status = 0;
-        $cart->save();
+        if(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->count() == 1){
+           foreach(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->get() as $item){
+            $cart = Cart::find($item->id);
+            $cart->quantity =  $cart->quantity+$request->quantity;
+            $cart->save();
 
+           }
+        }
+        else{
+
+            $cart = new Cart();
+            $cart->book_id = $request->book_id;
+            $cart->library_id = $request->library_id;
+            $cart->quantity = $request->quantity;
+            $cart->user_id = Auth::user()->id;
+            $cart->status = 0;
+            $cart->save();
+
+        }
 
         toast('Book added to cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
+
+
+        //Redirect to book page after addtocart login
+
+        if(login_redirect()){
+
+            return redirect()->route('book_show',['id' => $request->id]);
+        }
 
         return redirect()->back();
 
@@ -83,6 +105,25 @@ class FrontendController extends Controller
         toast('Item removed from cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
 
         return redirect()->back();
+
+    }
+
+
+
+    public function checkout(){
+
+        $items = Cart::where('user_id', Auth::user()->id)->get();
+
+        foreach($items as $item){
+            if($item->library_id )
+            $order = new Order();
+            $order->invoice =  rand(6);
+            $order->library_id =  $item->library_id;
+            $order->user_id =   $item->user_id;
+
+        }
+
+
 
     }
 
