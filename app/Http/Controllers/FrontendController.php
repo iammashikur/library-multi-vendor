@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Cart;
+use App\Models\Cart_library;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Library;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,6 +65,10 @@ class FrontendController extends Controller
     public function cart_add(Request $request){
 
 
+
+
+
+
         if(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->count() == 1){
            foreach(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->get() as $item){
             $cart = Cart::find($item->id);
@@ -81,6 +87,19 @@ class FrontendController extends Controller
             $cart->status = 0;
             $cart->save();
 
+        }
+
+        $CartLibrary = Cart_library::where([
+            'user_id' => Auth::user()->id,
+            'library_id' => $request->library_id,
+        ]);
+
+        if($CartLibrary->count() == 0){
+            $cartLib = new Cart_library();
+            $cartLib->cart_id =  $cart->id;
+            $cartLib->library_id =  $cart->library_id;
+            $cartLib->user_id =  Auth::user()->id;
+            $cartLib->save();
         }
 
         toast('Book added to cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
@@ -112,18 +131,52 @@ class FrontendController extends Controller
 
     public function checkout(){
 
-        $items = Cart::where('user_id', Auth::user()->id)->get();
 
-        foreach($items as $item){
-            if($item->library_id )
+        $CartLibrary = Cart_library::where([
+            'user_id' => Auth::user()->id,
+        ]);
+
+        foreach($CartLibrary->get() as $item){
+
+
+            $cart = Cart::where([
+                'user_id' => Auth::user()->id,
+                'library_id' => $item->id,
+            ])->get();
+
+            $total = 0;
+
+            foreach($cart as $books){
+
+                $total += \App\Models\Book::find($books->book_id)->price * $books->quantity;
+
+            }
+
             $order = new Order();
-            $order->invoice =  rand(6);
+            $order->invoice =  rand(6,6);
             $order->library_id =  $item->library_id;
-            $order->user_id =   $item->user_id;
+            $order->user_id =   Auth::user()->id;
+            $order->total_price = $total;
+            $order->status = 0;
+            $order->save();
+
+            foreach($cart as $books){
+
+                $order_item = new OrderItem();
+                $order_item->order_id =  $order->id;
+                $order_item->book_id =  $books->book_id;
+                $order_item->quantity =  $books->quantity;
+                $order_item->unit_price = \App\Models\Book::find($books->book_id)->price;
+                $order_item->sum_price  = \App\Models\Book::find($books->book_id)->price * $books->quantity;
+                $order_item->save();
+
+            }
+
+
+
+
 
         }
-
-
 
     }
 
