@@ -136,7 +136,7 @@
 
 
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
-          <div class="container-fluid">
+          <div class="container">
 
 
 

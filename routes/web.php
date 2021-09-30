@@ -39,14 +39,14 @@ Route::get('/library/{id}', [App\Http\Controllers\FrontendController::class, 'li
 
 Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_show'])->name('book_show');
 
-// Cart
-Route::get('/mycart', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
+
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('/addtocart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_add'])->name('cart_add');
+    Route::post('/addtocart/', [App\Http\Controllers\FrontendController::class, 'cart_add'])->name('cart_add');
     Route::get('/removecart/{id}', [App\Http\Controllers\FrontendController::class, 'cart_remove'])->name('cart_remove');
-
+    Route::get('/mycart', [App\Http\Controllers\FrontendController::class, 'cart_show'])->name('cart_show');
+    Route::get('/checkout', [App\Http\Controllers\FrontendController::class, 'checkout'])->name('checkout');
 
 });
 

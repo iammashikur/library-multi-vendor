@@ -56,8 +56,7 @@
 
                     @foreach ($cart as $item)
                     @php
-
-                        $total += App\Models\Book::find($item->book_id)->price;
+                        $total += App\Models\Book::find($item->book_id)->price * $item->quantity;
                     @endphp
                     <tr>
                         <td style="width: 100px" class="d-none d-md-table-cell">
@@ -69,7 +68,7 @@
                             <p>By <strong>মুহম্মদ জাফর ইকবাল</strong></p>
                             <p>Category : <i>উপন্যাস</i></p>
                         </td>
-                        <td class="item-price">৳ {{App\Models\Book::find($item->book_id)->price}}</td>
+                        <td class="item-price">৳ {{App\Models\Book::find($item->book_id)->price}} x {{$item->quantity}}</td>
                         <td class="action-button">
                             <a class="btn btn-danger btn-xs text-white" href="{{route('cart_remove', ['id'=> $item->id ])}}" role="button">
                                 <i class="fas fa-trash    "></i> Remove
@@ -91,29 +90,20 @@
                                 <i class="d-block d-md-none">Total</i>
                             </td>
                             <td class="item-price">৳ {{ $total }}</td>
+
+
+
+
+
+
                             <td class="action-button">
-                                <a class="btn btn-success btn-xs text-white" href="" role="button">
+
+                               <a class="btn btn-success btn-xs text-white" href="{{route('checkout')}}" role="button">
                                     <i class="fas fa-shopping-bag    "></i> Checkout
                                </a>
+
                             </td>
                         </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 </tbody>
             </table>
