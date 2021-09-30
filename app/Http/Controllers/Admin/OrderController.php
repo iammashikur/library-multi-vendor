@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:admin|librarian']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +54,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        
+
         $subTotal = $order->orderItems->sum('sum_price');
         return view('admin.order_show', compact('order', 'subTotal'));
     }

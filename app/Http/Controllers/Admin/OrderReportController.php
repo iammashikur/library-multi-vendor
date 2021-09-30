@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class OrderReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:admin|librarian']);
+    }
+    
     /**
      * Display a listing of the resource.
      *

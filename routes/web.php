@@ -64,14 +64,14 @@ Route::get('/cities', [App\Http\Controllers\FrontendController::class, 'cities']
  *  Admin Routes Starts here
  */
 
-Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'], function(){
+Route::group(['middleware' => ['role:admin|writer|manager|librarian|volunteer'],'prefix' => 'admin', 'as' => 'admin.'], function(){
   // Dashboard Route
   Route::get('/dashboard', [DashboardController::class, 'Dashboard'])->name('dashboard');
 
   // Category Routes
   Route::resource('/category', CategoryController::class);
 
-  // Post Rotues
+  // Post Routes
   Route::resource('/blog', BlogController::class);
 
   // Library Routes

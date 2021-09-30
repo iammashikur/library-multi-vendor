@@ -14,6 +14,11 @@ use File;
 class BookController extends Controller
 {
     use ImageTrait;
+
+    public function __construct()
+    {
+        $this->middleware(['role:admin|librarian']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,11 +64,11 @@ class BookController extends Controller
         $book->num_of_page = $request->num_of_page;
         $book->publisher   = $request->publisher;
         $book->tags        = json_encode($request->tags);
-        $book->status      = $request->status ? 1 : 0;     
+        $book->status      = $request->status ? 1 : 0;
         $book->save();
         toast('Book Created!','success')->width('300px')->padding('10px');
         return redirect()->route('admin.book.index');
- 
+
     }
 
     /**
@@ -119,7 +124,7 @@ class BookController extends Controller
          $book->num_of_page = $request->num_of_page;
          $book->publisher   = $request->publisher;
          $book->tags        = json_encode($request->tags);
-         $book->status      = $request->status ? 1 : 0; 
+         $book->status      = $request->status ? 1 : 0;
          $book->save();
          toast('Book Updated!','success')->width('300px')->padding('10px');
         return redirect()->route('admin.book.index');
