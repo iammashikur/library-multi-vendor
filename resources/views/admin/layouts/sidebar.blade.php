@@ -24,6 +24,7 @@
             </li>
             @endhasanyrole
 
+            @hasanyrole('admin|librarian')
             <li class="dropdown {{ MenuActive('library', 2) }}">
                 <a href="{{ route('admin.library.index') }}" class="nav-link"><i
                         data-feather="book-open"></i><span>Libaray Setting</span></a>
@@ -39,32 +40,40 @@
                         data-feather="shopping-bag"></i><span>Orders</span></a>
             </li>
 
+
             <li class="dropdown {{ MenuActive('order-reprot', 2) }}">
                 <a href="{{ route('admin.order-report.index') }}" class="nav-link"><i
                         data-feather="bar-chart-2"></i><span>Order Report</span></a>
             </li>
+            @endhasanyrole
 
+            @hasanyrole('admin|manager')
             <li class="dropdown {{ MenuActive('pdf', 2) }}">
                 <a href="{{ route('admin.pdf.index') }}" class="nav-link"><i
                         data-feather="file-text"></i><span>PDF File</span></a>
             </li>
+            @endhasanyrole
 
+            @hasanyrole('admin')
             <li class="dropdown {{ MenuActive('pdf', 2) }}">
                 <a href="{{ route('admin.library-payment.index') }}" class="nav-link"><i
                         data-feather="dollar-sign"></i><span>Library Payments</span></a>
             </li>
+            @endhasanyrole
 
+            @hasanyrole('admin')
             <li class="dropdown {{ MenuActive('category', 2) }}">
                 <a href="{{ route('admin.category.index') }}" class="nav-link"><i
                         data-feather="list"></i><span>Category</span></a>
             </li>
+            @endhasanyrole
 
-
+            @hasanyrole('admin')
             <li class="dropdown {{ MenuActive('settings', 1) }}">
                 <a href="{{ url('/settings') }}" class="nav-link"><i
                         data-feather="settings"></i><span>settings</span></a>
             </li>
-
+            @endhasanyrole
             {{-- <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="command"></i><span>Apps</span></a>

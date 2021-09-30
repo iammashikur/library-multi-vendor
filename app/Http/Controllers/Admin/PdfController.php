@@ -16,6 +16,11 @@ class PdfController extends Controller
 {
     use ImageTrait, SaveFileTrait;
 
+    public function __construct()
+    {
+        $this->middleware(['role:admin|manager']);
+    }
+
     /**
      * Display a listing of the resource.
      *

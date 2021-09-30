@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class LibraryPaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +32,7 @@ class LibraryPaymentController extends Controller
         if($today == $lastDayOfMonth){
            LibraryWallet::query()->update(['status' => 0]);
         }
-        
+
         return $dataTable->render('admin.library_payment_all');
     }
 
