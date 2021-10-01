@@ -69,8 +69,8 @@
             @endhasanyrole
 
             @hasanyrole('admin')
-            <li class="dropdown {{ MenuActive('settings', 1) }}">
-                <a href="{{ url('/settings') }}" class="nav-link"><i
+            <li class="dropdown {{ MenuActive('settings', 2) }}">
+                <a href="{{ route('admin.settings.index') }}" class="nav-link"><i
                         data-feather="settings"></i><span>settings</span></a>
             </li>
             @endhasanyrole

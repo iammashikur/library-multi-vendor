@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\LibraryPaymentController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderReportController;
 use App\Http\Controllers\Admin\PdfController;
+use App\Http\Controllers\Admin\SiteSettings;
+use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Models\OrderReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -92,6 +94,9 @@ Route::group(['middleware' => ['role:admin|writer|manager|librarian|volunteer'],
 
   // Library Payment Routes
   Route::resource('/library-payment', LibraryPaymentController::class);
+
+  // Library Payment Routes
+  Route::resource('/settings', SiteSettingsController::class);
 
 
 
