@@ -64,11 +64,6 @@ class FrontendController extends Controller
 
     public function cart_add(Request $request){
 
-
-
-
-
-
         if(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->count() == 1){
            foreach(Cart::where(['user_id' => Auth::user()->id, 'book_id' => $request->book_id])->get() as $item){
             $cart = Cart::find($item->id);
@@ -118,7 +113,6 @@ class FrontendController extends Controller
 
     public function cart_remove(Request $request){
 
-
         Cart::find($request->id)->delete();
 
         toast('Item removed from cart!','success')->width('300px')->padding('10px')->position($position = 'bottom-end')->autoClose(1500);
@@ -127,9 +121,39 @@ class FrontendController extends Controller
 
     }
 
-
-
     public function checkout(){
+
+        // $cart = Cart::where('user_id', Auth::user()->id)->get();
+        // $groupedByLibrary = $cart->groupBy('library_id');
+
+        // foreach($groupedByLibrary as $items){
+        //     $totalPrice = 0;
+        //     foreach($items as $item){
+        //         $bookPrice = Book::find($item->book_id)->price;
+        //         $totalPrice += $bookPrice * $item->quantity;
+        //     }
+        //     $order = $items->first();
+        //     $setOrder = new Order();
+        //     $setOrder->library_id = $order->library_id;
+        //     $setOrder->invoice = '12548';
+        //     $setOrder->user_id = $order->user_id;
+        //     $setOrder->total_price = $totalPrice;
+        //     $setOrder->save();
+
+        //     foreach($items as $singleItem){
+        //         $singlePrice = Book::find($singleItem->book_id)->price;
+        //         $orderItem = new OrderItem();
+        //         $orderItem->order_id = $setOrder->id;
+        //         $orderItem->book_id = $singleItem->book_id;
+        //         $orderItem->unit_price = $singlePrice;
+        //         $orderItem->quantity = $singleItem->quantity;
+        //         $orderItem->sum_price = $singlePrice * $singleItem->quantity;
+        //         $orderItem->save();
+        //     }
+
+        //     // resting totalPrice
+        //     $totalPrice = 0;
+        // }
 
 
         $CartLibrary = Cart_library::where([
@@ -141,15 +165,13 @@ class FrontendController extends Controller
 
             $cart = Cart::where([
                 'user_id' => Auth::user()->id,
-                'library_id' => $item->id,
+                'library_id' => $item->library_id,
             ])->get();
 
             $total = 0;
 
             foreach($cart as $books){
-
                 $total += \App\Models\Book::find($books->book_id)->price * $books->quantity;
-
             }
 
             $order = new Order();
@@ -172,22 +194,14 @@ class FrontendController extends Controller
 
             }
 
-
-
-
-
         }
 
     }
 
 
-
-
     public function districts(Request $request){
-
         $districts = District::where('division_id', $request->division_id)->get();
         return $districts;
-
     }
 
 

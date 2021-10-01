@@ -13,7 +13,7 @@ class OrderController extends Controller
     {
         $this->middleware(['role:admin|librarian']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
