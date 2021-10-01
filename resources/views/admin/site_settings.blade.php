@@ -24,7 +24,7 @@
             <div class="card-header" style="border-bottom-color: #d0d0d0">
                 <h4>Settings</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.category.index') }}" class="btn btn-warning">Go Back</a>
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-warning">Go Back</a>
                 </div>
             </div>
             <div class="card-body">
@@ -95,27 +95,27 @@
                     <div class="form-group mb-0">
                         <div class="form-group">
                             <label for="meta"><b>Meta</b></label>
-                            <input id="meta" type="text" class="form-control" name="meta" value="{{ $settings->meta }}">
+                            <input id="meta" type="text" class="form-control" name="meta" value="{{ @$settings->meta }}">
                         </div>
                     </div>
 
                     <div class="form-group mb-0">
                         <div class="form-group">
                             <label for="meta"><b>Description</b></label>
-                            <textarea name="description" class="form-control" >{{ $settings->description }}</textarea>
+                            <textarea name="description" class="form-control" >{{ @$settings->description }}</textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="hero_title"><b>Tags</b></label>
-                        <input type="text" class="form-control inputtags" name="tags" value="{{ json_decode($settings->tags) }}">
+                        <input type="text" class="form-control inputtags" name="tags" value="{{ json_decode(@$settings->tags) }}">
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hero_title"><b>Hero H1</b></label>
-                                <input id="hero_title" type="text" class="form-control" name="hero_title" value="{{ $settings->hero_title }}">
+                                <input id="hero_title" type="text" class="form-control" name="hero_title" value="{{ @$settings->hero_title }}">
                             </div>
                         </div>
 
@@ -123,7 +123,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="hero_sub_title"><b>Hero H2</b></label>
-                                    <input id="hero_sub_title" type="text" class="form-control" name="hero_sub_title" value="{{ $settings->hero_sub_title }}">
+                                    <input id="hero_sub_title" type="text" class="form-control" name="hero_sub_title" value="{{ @$settings->hero_sub_title }}">
                                 </div>
                             </div>
                         </div>
