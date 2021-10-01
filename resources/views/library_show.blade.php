@@ -132,11 +132,7 @@
                 </div>
 
 
-                @foreach (App\Models\Book::where('library_id', $library->id)->get() as $item)
 
-
-
-                @endforeach
 
 
                 <div class="row">
@@ -168,34 +164,35 @@
                         <div class="row">
 
 
-                            @for ($i = 0; $i < 100; $i++)
+                            @foreach (App\Models\Book::where('library_id', $library->id)->get() as $item)
 
-                               <div class="col-md-3 col-6 mt-4 mb-3">
-                                  <a href="{{url('/book/1')}}">
-                                    <div class="book">
+                            <div class="col-md-3 col-6 mt-4 mb-3">
+                                <a href="{{url('/book/1')}}">
+                                  <div class="book">
 
-                                        <img class="book-cover" src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/e895ab4704e4_127637.jpg" alt="" width="100%">
-                                        <div class="book-info">
-                                            <h1>
-                                                    অপারেশন নীলাঞ্জনা (হার্ডকভার)
-                                            </h1>
-                                            <h2>
-                                                    মুহম্মদ জাফর ইকবাল
-                                            </h2>
+                                      <img class="book-cover" src="{{url('/uploads/images').'/'.$item->cover_image}}" alt="" width="100%">
+                                      <div class="book-info">
+                                          <h1>
+                                                  {{$item->title}}
+                                          </h1>
+                                          <h2>
+                                                {{$item->writer}}
+                                          </h2>
 
-                                            <p>
-                                                Price : 200 taka
-                                            </p>
+                                          <p>
+                                              Price : {{$item->price}}
+                                          </p>
 
-                                        </div>
+                                      </div>
 
-                                       </div>
-                                  </a>
+                                     </div>
+                                </a>
 
-                               </div>
+                             </div>
+
+                        @endforeach
 
 
-                           @endfor
 
 
                        </div>
