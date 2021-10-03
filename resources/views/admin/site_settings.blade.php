@@ -12,7 +12,13 @@
       .col-form-label.text-md-right.col-12.col-md-3.col-lg-3 {
         font-size: 15px;
       }
+    .swal2-shown .nice-select{
+
+    *display*: none;
+
+    }
     </style>
+
 @endpush
 @section('content')
 
@@ -23,9 +29,6 @@
         <div class="card card-primary">
             <div class="card-header" style="border-bottom-color: #d0d0d0">
                 <h4>Settings</h4>
-                <div class="card-header-action">
-                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-warning">Go Back</a>
-                </div>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.settings.store') }}" method="POST" enctype="multipart/form-data">
@@ -134,7 +137,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="basic_cradit"><b>Blog Basic Rate</b></label>
-                                <input id="basic_cradit" type="text" class="form-control" name="basic_credit" value="{{ $settings->basic_credit }}">
+                                <input id="basic_cradit" type="text" class="form-control" name="basic_credit" value="{{ @$settings->basic_credit }}">
                             </div>
                         </div>
 
@@ -142,7 +145,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="pro_cradit"><b>Blog Pro Rate</b></label>
-                                    <input id="pro_cradit" type="text" class="form-control" name="pro_credit" value="{{ $settings->pro_credit }}">
+                                    <input id="pro_cradit" type="text" class="form-control" name="pro_credit" value="{{ @$settings->pro_credit }}">
                                 </div>
                             </div>
                         </div>
