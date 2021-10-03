@@ -26,31 +26,33 @@ class BookRequest extends FormRequest
         switch ($this->getMethod()) {
             case 'PUT':
                 return [
-                    'category_id' => ['required', 'integer'],
-                    'cover_image' => ['sometimes', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
-                    'title'       => ['required','max:200'],
-                    'description' => ['required'],
-                    'price'       => ['required', 'integer'],
-                    'stock'       => ['required', 'integer'],
-                    'num_of_page' => ['sometimes', 'integer'],
-                    'publisher'   => ['sometimes'],
-                    'writer'      => ['sometimes'],
-                    'status'      => ['sometimes'],
+                    'category_id'    => ['required', 'integer'],
+                    'cover_image'    => ['sometimes', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
+                    'title'          => ['required','max:200'],
+                    'description'    => ['required'],
+                    'price'          => ['required', 'integer'],
+                    'disabled_price' => ['sometimes', 'integer'],
+                    'stock'          => ['required', 'integer'],
+                    'num_of_page'    => ['sometimes', 'integer'],
+                    'publisher'      => ['sometimes'],
+                    'writer'         => ['sometimes'],
+                    'status'         => ['sometimes'],
                 ];
                 break;
 
             default:
                 return [
-                    'category_id' => ['required', 'integer'],
-                    'cover_image' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
-                    'title'       => ['required','max:200'],
-                    'description' => ['required'],
-                    'price'       => ['required', 'integer'],
-                    'stock'       => ['required', 'integer'],
-                    'num_of_page' => ['sometimes', 'integer'],
-                    'publisher'   => ['sometimes'],
-                    'writer'      => ['sometimes'],
-                    'status'      => ['sometimes'],
+                    'category_id'    => ['required', 'integer'],
+                    'cover_image'    => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:500'],
+                    'title'          => ['required','max:200'],
+                    'description'    => ['required'],
+                    'price'          => ['required', 'integer'],
+                    'disabled_price' => ['sometimes', 'integer'],
+                    'stock'          => ['required', 'integer'],
+                    'num_of_page'    => ['sometimes', 'integer'],
+                    'publisher'      => ['sometimes'],
+                    'writer'         => ['sometimes'],
+                    'status'         => ['sometimes'],
                 ];
                 break;
         }
