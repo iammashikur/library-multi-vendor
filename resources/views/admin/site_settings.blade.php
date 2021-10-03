@@ -29,6 +29,12 @@
         <div class="card card-primary">
             <div class="card-header" style="border-bottom-color: #d0d0d0">
                 <h4>Settings</h4>
+<<<<<<< HEAD
+=======
+                <div class="card-header-action">
+                    <a href="" class="btn btn-warning">Go Back</a>
+                </div>
+>>>>>>> f1efcfea050a4c09e5a164c40cfc5899174da35d
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.settings.store') }}" method="POST" enctype="multipart/form-data">
@@ -62,7 +68,7 @@
                         <div class="col-md-4">
                             <div class="form-group mb-0">
                                 <div class="form-group">
-                                    <label for="banner"><b>Banner 1</b></label>
+                                    <label for="banner"><b>Banner</b></label>
                                     <input id="banner" type="file" class="form-control" name="banner_one">
                                     <div class="show-image">
                                         <img width="150px"  src="{{ asset('/uploads/images/'. @$settings->banner_one) }}" alt="">
@@ -70,10 +76,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 d-none">
                             <div class="form-group mb-0">
                                 <div class="form-group">
-                                    <label for="banner"><b>Banner 2</b></label>
+                                    <label for="banner"><b>Banner</b></label>
                                     <input id="banner" type="file" class="form-control" name="banner_two">
                                     <div class="show-image">
                                         <img width="150px"  src="{{ asset('/uploads/images/'. @$settings->banner_two) }}" alt="">
@@ -81,10 +87,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 d-none">
                             <div class="form-group mb-0">
                                 <div class="form-group">
-                                    <label for="banner"><b>Banner 3</b></label>
+                                    <label for="banner"><b>Banner</b></label>
                                     <input id="banner" type="file" class="form-control" name="banner_three">
                                     <div class="show-image">
                                         <img width="150px"  src="{{ asset('/uploads/images/'. @$settings->banner_three) }}" alt="">

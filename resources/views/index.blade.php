@@ -170,10 +170,10 @@
 
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-5">
                     <div class="section-title">
-                        <h2>সবচেয়ে বেশি বিক্রি হওয়া বই</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+                        <h2>{{\App\Models\SiteSettings::first()->hero_title}}</h2>
+                        <p>{{\App\Models\SiteSettings::first()->hero_sub_title}}</p>
                     </div>
                 </div>
             </div>
@@ -223,7 +223,7 @@
             @endpush
 
             <div class="row">
-                @foreach (App\Models\Book::limit(4)->get() as $item)
+                @foreach (App\Models\Book::where('library_id', 1)->limit(4)->latest()->get() as $item)
 
                 <div class="col-md-3 col-6 mb-4">
 
@@ -257,14 +257,7 @@
             </div>
 
 
-            <div class="row">
-                <div class="col-md-12 mt-5">
-                    <div class="section-title">
-                        <h2>সবচেয়ে বেশি বিক্রি হওয়া বই</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
-                    </div>
-                </div>
-            </div>
+
 
 
         </div>
@@ -275,11 +268,15 @@
 
 @endsection
 
+@php
+    $heroBg = url('/uploads/images').'/'.\App\Models\SiteSettings::first()->banner_one;
+@endphp
+
 
 @push('style')
 <style>
     .bg-1 {
-  background: url("{{url('/uploads/images/cover2.jpg')}}");
+  background: url("{{  $heroBg }}");
   background-size: cover;
   background-repeat: no-repeat;
 }
