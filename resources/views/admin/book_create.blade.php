@@ -27,7 +27,7 @@
                     <a href="{{ route('admin.book.index') }}" class="btn btn-warning">Go Back</a>
                 </div>
             </div>
-           
+
             <div class="card-body">
 
              <form action="{{ route('admin.book.store') }}" method="POST" enctype="multipart/form-data">
@@ -74,6 +74,13 @@
                   <div class="col-sm-12 col-md-7">
                     <input type="text" name="price" class="form-control" ">
                   </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Disabled Price</label>
+                    <div class="col-sm-12 col-md-7">
+                      <input type="text" name="disabled_price" class="form-control" ">
+                    </div>
                 </div>
 
                 <div class="form-group row mb-4">
@@ -127,7 +134,7 @@
                     <div class="col-sm-12 col-md-7">
                         <button class="btn btn-primary">Create Book</button>
                     </div>
-                </div> 
+                </div>
 
              </form>
             </div>

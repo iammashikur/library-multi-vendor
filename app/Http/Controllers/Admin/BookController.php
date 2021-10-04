@@ -52,19 +52,20 @@ class BookController extends Controller
         $imagePath = $this->MakeImage($request, 'cover_image', public_path('/uploads/images/'));
 
         /** Save request data to db */
-        $book->user_id     = Auth::id();
-        $book->library_id  = Auth::user()->library->id;
-        $book->category_id = $request->category_id;
-        $book->cover_image = $imagePath;
-        $book->title       = $request->title;
-        $book->price       = $request->price;
-        $book->stock       = $request->stock;
-        $book->description = $request->description;
-        $book->writer      = $request->writer;
-        $book->num_of_page = $request->num_of_page;
-        $book->publisher   = $request->publisher;
-        $book->tags        = json_encode($request->tags);
-        $book->status      = $request->status ? 1 : 0;
+        $book->user_id        = Auth::id();
+        $book->library_id     = Auth::user()->library->id;
+        $book->category_id    = $request->category_id;
+        $book->cover_image    = $imagePath;
+        $book->title          = $request->title;
+        $book->price          = $request->price;
+        $book->disabled_price = $request->disabled_price;
+        $book->stock          = $request->stock;
+        $book->description    = $request->description;
+        $book->writer         = $request->writer;
+        $book->num_of_page    = $request->num_of_page;
+        $book->publisher      = $request->publisher;
+        $book->tags           = json_encode($request->tags);
+        $book->status         = $request->status ? 1 : 0;
         $book->save();
         toast('Book Created!','success')->width('300px')->padding('10px');
         return redirect()->route('admin.book.index');
@@ -105,7 +106,7 @@ class BookController extends Controller
     {
         // return $request;
         if($request->hasFile('cover_image')){
-            /** Deleteing previous image */
+            /** Deleting previous image */
             File::delete(public_path("/uploads/images/$book->cover_image"));
             /** Save image on dir */
             $imagePath = $this->MakeImage($request, 'cover_image', public_path('/uploads/images/'));
@@ -113,18 +114,19 @@ class BookController extends Controller
         }
 
          /** Save request data to db */
-         $book->user_id     = Auth::id();
-         $book->library_id  = Auth::user()->library->id;
-         $book->category_id = $request->category_id;
-         $book->title       = $request->title;
-         $book->price       = $request->price;
-         $book->stock       = $request->stock;
-         $book->description = $request->description;
-         $book->writer      = $request->writer;
-         $book->num_of_page = $request->num_of_page;
-         $book->publisher   = $request->publisher;
-         $book->tags        = json_encode($request->tags);
-         $book->status      = $request->status ? 1 : 0;
+         $book->user_id        = Auth::id();
+         $book->library_id     = Auth::user()->library->id;
+         $book->category_id    = $request->category_id;
+         $book->title          = $request->title;
+         $book->price          = $request->price;
+         $book->disabled_price = $request->disabled_price;
+         $book->stock          = $request->stock;
+         $book->description    = $request->description;
+         $book->writer         = $request->writer;
+         $book->num_of_page    = $request->num_of_page;
+         $book->publisher      = $request->publisher;
+         $book->tags           = json_encode($request->tags);
+         $book->status         = $request->status ? 1 : 0;
          $book->save();
          toast('Book Updated!','success')->width('300px')->padding('10px');
         return redirect()->route('admin.book.index');

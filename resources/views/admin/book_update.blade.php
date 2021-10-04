@@ -27,7 +27,7 @@
                     <a href="{{ route('admin.book.index') }}" class="btn btn-warning">Go Back</a>
                 </div>
             </div>
-           
+
             <div class="card-body">
 
              <form action="{{ route('admin.book.update', $book->id) }}" method="POST" enctype="multipart/form-data">
@@ -36,7 +36,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cover Image</label>
                   <div class="col-sm-12 col-md-7">
-                    <div id="image-preview" class="image-preview" 
+                    <div id="image-preview" class="image-preview"
                     style="background-image: url({{ asset("/uploads/images/$book->cover_image") }}); background-size: cover; background-position: center center;">
                       <label for="image-upload" id="image-label">Choose File</label>
                       <input type="file" name="cover_image" id="image-upload" />
@@ -74,6 +74,13 @@
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Price</label>
                     <div class="col-sm-12 col-md-7">
                       <input type="text" name="price" class="form-control" value="{{ $book->price }}">
+                    </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Disabled Price</label>
+                    <div class="col-sm-12 col-md-7">
+                      <input type="text" name="disabled_price" class="form-control" ">
                     </div>
                 </div>
 
@@ -128,7 +135,7 @@
                     <div class="col-sm-12 col-md-7">
                         <button class="btn btn-primary">Update Book</button>
                     </div>
-                </div> 
+                </div>
 
              </form>
             </div>

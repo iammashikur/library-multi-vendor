@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->integer('price');
+            $table->integer('disabled_price')->default(0);
             $table->integer('stock');
             $table->text('writer')->nullable();
             $table->integer('num_of_page')->nullable();
