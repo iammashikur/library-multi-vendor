@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Book;
 use App\Models\Cart;
 use App\Models\Cart_library;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Library;
@@ -48,7 +50,15 @@ class FrontendController extends Controller
 
     }
 
+    public function library_search(Request $request){
+
+        $library = Library::find($request->id);
+        return view('library_show', compact('library'));
+
+    }
+
     public function book_show(Request $request){
+
 
         $book = Book::find($request->id);
         return view('book_show',compact('book'));
@@ -208,4 +218,45 @@ class FrontendController extends Controller
         return $cities;
 
     }
+
+
+    public function blog_index(Request $request){
+
+        $blogs = Blog::latest()->paginate('10');
+
+        return view('blog_index',compact('blogs'));
+
+    }
+
+
+    public function blog_show(Request $request){
+
+        $blog = Blog::find($request->id);
+
+        return view('blog_show',compact('blog'));
+
+    }
+
+    public function blog_category_show(Request $request){
+
+        $blogs = Blog::where('category_id', $request->id)->paginate(10);
+        return view('blog_category_show',compact('blogs'));
+
+    }
+
+    public function blog_search(Request $request){
+
+        $blog = Blog::where('Like','=','%'.$request->search.'%')->findOrFail();
+        return view('blog_category_show',compact('blog'));
+
+    }
+
+    // function show_current_balance($USER){
+
+    //     $auth = Auth::user()->id;
+    //     $total = BlogViews::where(['user_id'=> $auth])->sum('blog_credit');
+    //     $withdrawed = blogWithdraw::where(['user_id'=> $auth])->sum('amount');
+    //     return $current_balance = $total-$withdrawed;
+
+    // }
 }
