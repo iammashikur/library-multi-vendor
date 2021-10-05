@@ -80,7 +80,7 @@
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Disabled Price</label>
                     <div class="col-sm-12 col-md-7">
-                      <input type="text" name="disabled_price" class="form-control" ">
+                      <input type="text" name="disabled_price" class="form-control" value="{{ $book->disabled_price }}">
                     </div>
                 </div>
 

@@ -77,7 +77,7 @@
             @hasanyrole('admin')
             <li class="dropdown {{ MenuActive('rating', 2) }}">
                 <a href="{{ route('admin.rating.index') }}" class="nav-link"><i
-                        data-feather="settings"></i><span>settings</span></a>
+                        data-feather="settings"></i><span>Ratings</span></a>
             </li>
             @endhasanyrole
             {{-- <li class="dropdown">
