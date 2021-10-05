@@ -30,18 +30,12 @@ use Illuminate\Support\Facades\Route;
 // Home Page
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('index');
 
-// Blog
-Route::get('/blogs', [App\Http\Controllers\FrontendController::class, 'blogs'])->name('blogs');
-Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'blog_show'])->name('blog_show');
 
 // Library
 Route::get('/libraries', [App\Http\Controllers\FrontendController::class, 'search_libraries'])->name('search_libraries');
 Route::get('/library/{id}', [App\Http\Controllers\FrontendController::class, 'library_show'])->name('library_show');
-
-
+Route::get('/library/{id}/search', [App\Http\Controllers\FrontendController::class, 'library_search'])->name('library_search');
 Route::get('/book/{id}', [App\Http\Controllers\FrontendController::class, 'book_show'])->name('book_show');
-
-
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -53,6 +47,12 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
+
+// Blog
+
+Route::get('blog/category/{id}', [App\Http\Controllers\FrontendController::class, 'blog_category_show'])->name('blog_category_show');
+Route::get('blogs/', [App\Http\Controllers\FrontendController::class, 'blog_index'])->name('blog_index');
+Route::get('blog/{id}', [App\Http\Controllers\FrontendController::class, 'blog_show'])->name('blog_show');
 
 
 // Location
