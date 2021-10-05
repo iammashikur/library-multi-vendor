@@ -151,9 +151,8 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="{{url('/library/1')}}">সব লাইব্রেরি</a>
-                  </li>
-
+                    <a class="nav-link" href="{{url('/blogs')}}">লেখাগুলো</a>
+                </li>
 
 
                   <li class="nav-item dropdown">

@@ -119,7 +119,7 @@
     fade: true
   });
 
-  // Client Slider 
+  // Client Slider
   $('.category-slider').slick({
     dots: false,
     slidesToShow: 5,
@@ -158,7 +158,7 @@
     ]
   });
 
-  // trending-ads-slide 
+  // trending-ads-slide
 
   $('.trending-ads-slide').slick({
     dots: false,
@@ -223,7 +223,7 @@
      // bootstrap slider range
   $('.range-track').slider({});
   $('.range-track').on('slide', function (slideEvt) {
-    $('.value').text('$' + slideEvt.value[0] + ' - ' + '$' + slideEvt.value[1]);
+    $('.value').text('৳' + slideEvt.value[0] + ' - ' + '৳' + slideEvt.value[1]);
   });
 
 

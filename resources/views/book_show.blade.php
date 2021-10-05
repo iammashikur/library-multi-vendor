@@ -55,14 +55,14 @@
 
                         </div>
 
-                        <div class="col-md-5 col-12">
+                        <div class="col-md-4 col-12">
 
 
 
                             <div class="book-details mt-md-5 mt-0 pl-4 p-md-0 mb-5">
                                 <h1>{{$book->title}}</h1>
-                                <p>By <strong>মুহম্মদ জাফর ইকবাল</strong></p>
-                                <p>Category : <i>উপন্যাস</i></p>
+                                <p>By <strong>{{$book->writer}}</strong></p>
+                                <p>Category : <i style="color: #5672f9">{{App\Models\Category::find($book->category_id)->name}}</i></p>
 
 
                                 <h1>৳ {{$book->price}}</h1>
@@ -101,7 +101,12 @@
 
                         </div>
 
-                        <div class="col-md-3 col-12" style="display: block; background:#f7f7f7">
+                        <div class="col-md-4 col-12">
+
+                            <div class="p-4" style="display: block; background:#f7f7f7; height:100%">
+                                <i style="color:#5672f9">বইয়ের বর্ণনা</i>  :
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A provident dolorum voluptate fuga nemo voluptatibus temporibus veritatis cum quasi aspernatur ad, soluta facere modi voluptatem similique? Numquam aliquid ut voluptate?
+                            </div>
 
                         </div>
 

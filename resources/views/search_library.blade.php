@@ -149,7 +149,7 @@
                                                         {{$lib->address}}</a></li>
                                                 </ul>
                                                 <p>
-                                                    {{$lib->description}}
+                                                    {{Illuminate\Support\Str::words($lib->description, 15)}}
                                                 </p>
                                             </div>
                                         </div>
