@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
+use App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 
-class BookFactory extends Factory
+class BlogFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Book::class;
+    protected $model = Blog::class;
 
     /**
      * Define the model's default state.
@@ -24,17 +24,12 @@ class BookFactory extends Factory
     {
         return [
             'user_id'     => 1,
-            'library_id'  => 1,
             'category_id' => 1,
-            'cover_image' => $this->faker->image('public/uploads/images',480,640, null, false),
+            'image'       => $this->faker->image('public/uploads/images',640,480, null, false),
             'title'       => $this->faker->word,
             'slug'        => 'Ikigai-The-Japanese-Secret-to-a-Long-and-HappyLife',
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, sint excepturi ipsam architecto atque nemo sequi quia, in, eligendi maiores molestiae unde alias! Temporibus maiores et quia dignissimos qui exercitationem.',
-            'disabled_price'       => '200',
-            'price'       => '500',
-            'stock'       => '100',
-            'writer'      => $this->faker->name,
-            'publisher'   => $this->faker->name,
+            'body'        => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, sint excepturi ipsam architecto atque nemo sequi quia, in, eligendi maiores molestiae unde alias! Temporibus maiores et quia dignissimos qui exercitationem.',
+            'is_premium'  => 0,
             'tags'        => 'Ikigai: The Japanese Secret to a Long and Happy Life',
             'status'      => 1
         ];

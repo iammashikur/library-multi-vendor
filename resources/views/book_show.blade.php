@@ -37,6 +37,10 @@
                             font-weight: 100;
                         }
 
+                        .book-details{
+                            border:none;
+                        }
+
                     </style>
                 @endpush
 
@@ -48,9 +52,8 @@
                         <div class="col-md-4 col-12">
 
                             <div class="p-md-5 p-4">
-                                <img src="{{$book->cover_image}}" alt="" class="w-100 ">
+                                <img src="{{url('/uploads/images').'/'.$book->cover_image}}" alt="" class="w-100 ">
                             </div>
-
 
 
                         </div>
@@ -65,8 +68,10 @@
                                 <p>Category : <i style="color: #5672f9">{{App\Models\Category::find($book->category_id)->name}}</i></p>
 
 
-                                <h1>৳ {{$book->price}}</h1>
-
+                                <h1> <strike style="color: #747373;" class="mr-2">৳ {{$book->disabled_price}} </strike> ৳ {{$book->price}} 
+                                <small style="font-size:14px; color:red">ডিসকাউন্ট {{ ($book->disabled_price - $book->price)/$book->disabled_price * 100}}%</small>
+                            </h1>
+                                
 
 
                                 <form action="{{route('cart_add')}}" method="POST">
@@ -112,6 +117,30 @@
 
 
                     </div>
+
+                </div>
+
+
+
+                <div class="card book-details p-4 mt-4 mb-4">
+ 
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">বইয়ের বর্ণনা</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">পর্যালোচনা</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">লাইব্রেরি</a>
+  </li>
+</ul>
+<div class="tab-content text-left pt-4" id="myTabContent">
+  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">{!!$book->description!!}</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
 
                 </div>
 
