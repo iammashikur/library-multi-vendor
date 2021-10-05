@@ -71,6 +71,7 @@ class RatingDataTable extends DataTable
             Column::make('image')->width('100')->addClass('text-center'),
             Column::make('book.title', 'book.title'),
             Column::make('user.name', 'user.name'),
+            Column::make('rating'),
             Column::make('comment'),
             Column::computed('action')
                   ->exportable(false)
