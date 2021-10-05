@@ -29,12 +29,9 @@
         <div class="card card-primary">
             <div class="card-header" style="border-bottom-color: #d0d0d0">
                 <h4>Settings</h4>
-<<<<<<< HEAD
-=======
                 <div class="card-header-action">
                     <a href="" class="btn btn-warning">Go Back</a>
                 </div>
->>>>>>> f1efcfea050a4c09e5a164c40cfc5899174da35d
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.settings.store') }}" method="POST" enctype="multipart/form-data">

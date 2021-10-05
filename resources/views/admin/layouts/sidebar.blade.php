@@ -74,6 +74,12 @@
                         data-feather="settings"></i><span>settings</span></a>
             </li>
             @endhasanyrole
+            @hasanyrole('admin')
+            <li class="dropdown {{ MenuActive('rating', 2) }}">
+                <a href="{{ route('admin.rating.index') }}" class="nav-link"><i
+                        data-feather="settings"></i><span>settings</span></a>
+            </li>
+            @endhasanyrole
             {{-- <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="command"></i><span>Apps</span></a>
