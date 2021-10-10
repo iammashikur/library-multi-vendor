@@ -146,22 +146,19 @@
                       <a class="nav-link" href="{{url('/')}}">হোম পেজ <span class="sr-only">(current)</span></a>
                   </li>
 
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{url('/book/1')}}">বই</a>
-                  </li>
 
                   <li class="nav-item">
                     <a class="nav-link" href="{{url('/blogs')}}">লেখাগুলো</a>
                 </li>
 
 
-                  <li class="nav-item dropdown">
+                  {{-- <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">সব লাইব্রেরি</a>
                       <div class="dropdown-menu" aria-labelledby="dropdownId">
                           <a class="dropdown-item" href="#">Action 1</a>
                           <a class="dropdown-item" href="#">Action 2</a>
                       </div>
-                  </li>
+                  </li> --}}
               </ul>
               <!-- <form class="form-inline my-2 my-lg-0">
                   <input class="form-control mr-sm-2" type="text" placeholder="Search">
