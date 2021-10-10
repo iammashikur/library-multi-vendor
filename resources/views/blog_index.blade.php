@@ -43,20 +43,11 @@
 
 
 
-				<!-- Pagination -->
-				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
-				    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
-				        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-				        <span class="sr-only">Next</span>
-				      </a>
-				    </li>
-				  </ul>
-				</nav>
+				{{$blogs->links()}}
+
+
+
+
 			</div>
 			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
 				<div class="sidebar">
@@ -86,18 +77,7 @@
 
                     </ul>
                 </div>
-					<!-- Archive Widget -->
-					<div class="widget archive">
-						<!-- Widget Header -->
-						<h5 class="widget-header">Archives</h5>
-						<ul class="archive-list">
-							<li><a href="">January 2017</a></li>
-							<li><a href="">February 2017</a></li>
-							<li><a href="">March 2017</a></li>
-							<li><a href="">April 2017</a></li>
-							<li><a href="">May 2017</a></li>
-						</ul>
-					</div>
+
 				</div>
 			</div>
 		</div>
