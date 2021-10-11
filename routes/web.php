@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LibraryPaymentController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderReportController;
 use App\Http\Controllers\Admin\PdfController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RatingController;
 use App\Http\Controllers\Admin\SiteSettings;
 use App\Http\Controllers\Admin\SiteSettingsController;
@@ -101,6 +102,9 @@ Route::group(['middleware' => ['role:admin|writer|manager|librarian|volunteer'],
 
   // Library Payment Routes
   Route::resource('/rating', RatingController::class);
+
+  // Profile Routes
+  Route::resource('/profile', ProfileController::class);
 
 
 
