@@ -55,7 +55,7 @@
             @endhasanyrole
 
             @hasanyrole('admin')
-            <li class="dropdown {{ MenuActive('pdf', 2) }}">
+            <li class="dropdown {{ MenuActive('library-payment', 2) }}">
                 <a href="{{ route('admin.library-payment.index') }}" class="nav-link"><i
                         data-feather="dollar-sign"></i><span>Library Payments</span></a>
             </li>
