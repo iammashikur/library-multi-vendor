@@ -27,7 +27,7 @@ class OrderDataTable extends DataTable
                 foreach($items->orderItems as $item){
                     $data .= $item->book->title.'<br>';
                 }
-                
+
                 return $data;
             })
             ->addColumn('Status', function($status){
@@ -40,7 +40,7 @@ class OrderDataTable extends DataTable
                 }elseif($status->status == 3){
                     $data = '<div class="badge btn-danger">Cancelld</div>';
                 }
-               
+
                 return $data;
             })
             ->addColumn('action', function($action){
@@ -58,11 +58,19 @@ class OrderDataTable extends DataTable
      */
     public function query(Order $model)
     {
-        return $model
-        ->where('library_id', Auth::user()->library->id)
-        ->where('status', '!=', 1)
-        ->with('orderItems.book')
-        ->newQuery();
+        if(auth()->user()->hasRole(['admin', 'manager', 'manager'])){
+            return $model
+            ->where('library_id', 1) // 1 is default admin library
+            ->where('status', '!=', 1)
+            ->with('orderItems.book')
+            ->newQuery();
+        }else{
+            return $model
+            ->where('library_id', Auth::user()->library->id)
+            ->where('status', '!=', 1)
+            ->with('orderItems.book')
+            ->newQuery();
+        }
     }
 
     /**
@@ -76,7 +84,7 @@ class OrderDataTable extends DataTable
                     ->setTableId('order-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->orderBy(0);        
+                    ->orderBy(0);
     }
 
     /**

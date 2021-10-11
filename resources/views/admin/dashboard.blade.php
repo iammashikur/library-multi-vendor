@@ -14,98 +14,315 @@
 
       <!-- Main Content -->
       <div class="main-content">
+
+        @hasanyrole('admin|manager|librarian')
+        {{-- Library section --}}
         <section class="section">
-          <div class="row ">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="card">
-                <div class="card-statistic-4">
-                  <div class="align-items-center justify-content-between">
-                    <div class="row ">
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                        <div class="card-content">
-                          <h5 class="font-15">New Booking</h5>
-                          <h2 class="mb-3 font-18">258</h2>
-                          <p class="mb-0"><span class="col-green">10%</span> Increase</p>
-                        </div>
+            <div class="row ">
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.book.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Book published</h5>
+                                    <h2 class="mb-3 font-18">{{ $allBooks }}</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/book-stack.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                        <div class="banner-img">
-                          <img src="assets/img/banner/1.png" alt="">
-                        </div>
+                  </a>
+              </div>
+
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.order.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Order Complited</h5>
+                                    <h2 class="mb-3 font-18">{{ $ordersCompleted }}</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 65px" class="" src="{{ asset('uploads/icons/box.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                  </a>
+              </div>
+
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.order.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Order Pending</h5>
+                                    <h2 class="mb-3 font-18">{{ $ordersPending }}</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 65px" class="" src="{{ asset('uploads/icons/pending.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.order-report.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Total Earnings</h5>
+                                    <h2 class="mb-3 font-18">{{ $totalEarning }} ৳</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/money.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </a>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="card">
-                <div class="card-statistic-4">
-                  <div class="align-items-center justify-content-between">
-                    <div class="row ">
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                        <div class="card-content">
-                          <h5 class="font-15"> Customers</h5>
-                          <h2 class="mb-3 font-18">1,287</h2>
-                          <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
+        </section>
+        @endhasanyrole
+
+        @hasanyrole('admin')
+        {{-- Admin section --}}
+        <section class="section">
+            <div class="row ">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a href="{{ route('admin.pdf.index') }}">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                                <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                    <h5 class="font-15">PDF published</h5>
+                                    <h2 class="mb-3 font-18">{{ $pdf }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                    <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/pdf.png') }}" alt="">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                        <div class="banner-img">
-                          <img src="assets/img/banner/2.png" alt="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </a>
                 </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="card">
-                <div class="card-statistic-4">
-                  <div class="align-items-center justify-content-between">
-                    <div class="row ">
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                        <div class="card-content">
-                          <h5 class="font-15">New Project</h5>
-                          <h2 class="mb-3 font-18">128</h2>
-                          <p class="mb-0"><span class="col-green">18%</span>
-                            Increase</p>
+
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a href="{{ route('admin.category.index') }}">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                                <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                    <h5 class="font-15">Total Categories</h5>
+                                    <h2 class="mb-3 font-18">{{ $categories }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                    <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/list.png') }}" alt="">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                        <div class="banner-img">
-                          <img src="assets/img/banner/3.png" alt="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </a>
                 </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="card">
-                <div class="card-statistic-4">
-                  <div class="align-items-center justify-content-between">
-                    <div class="row ">
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                        <div class="card-content">
-                          <h5 class="font-15">Revenue</h5>
-                          <h2 class="mb-3 font-18">$48,697</h2>
-                          <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a href="">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                                <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                    <h5 class="font-15">Active Admin Roles</h5>
+                                    <h2 class="mb-3 font-18">{{ $roles }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                    <div class="banner-img">
+                                    <img style="max-width: 65px" class="" src="{{ asset('uploads/icons/roles.png') }}" alt="">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                        <div class="banner-img">
-                          <img src="assets/img/banner/4.png" alt="">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </a>
                 </div>
-              </div>
+
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a href="{{ route('admin.rating.index') }}">
+                        <div class="card">
+                            <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                                <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                    <h5 class="font-15">Total User Ratings</h5>
+                                    <h2 class="mb-3 font-18">{{ $ratings }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                    <div class="banner-img">
+                                    <img style="max-width: 65px" class="" src="{{ asset('uploads/icons/star.png') }}" alt="">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-          </div>
+        </section>
+        @endhasanyrole
+
+        <section class="section">
+            <div class="row ">
+              @hasanyrole('manager|admin|writer')
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.blog.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Blog published</h5>
+                                    <h2 class="mb-3 font-18">{{ $blogs }}</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/feather.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.blog.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Blogs Pending</h5>
+                                    <h2 class="mb-3 font-18">{{ $blogsPending }}</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 65px" class="" src="{{ asset('uploads/icons/pending.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </a>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <a href="{{ route('admin.blog.index') }}">
+                    <div class="card">
+                        <div class="card-statistic-4">
+                          <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                <div class="card-content">
+                                  <h5 class="font-15">Blogs Approved</h5>
+                                  <h2 class="mb-3 font-18">{{ $blogsApproved }}</h2>
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                <div class="banner-img">
+                                  <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/check.png') }}" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+              @endhasanyrole
+              @hasanyrole('writer')
+              <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <a href="{{ route('admin.blog.index') }}">
+                      <div class="card">
+                          <div class="card-statistic-4">
+                            <div class="align-items-center justify-content-between">
+                              <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                  <div class="card-content">
+                                    <h5 class="font-15">Total Earnings</h5>
+                                    <h2 class="mb-3 font-18">{{ $blogsApproved }} ৳</h2>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0 d-flex align-items-center justify-content-center text-center">
+                                  <div class="banner-img">
+                                    <img style="max-width: 55px" class="" src="{{ asset('uploads/icons/money.png') }}" alt="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+              @endhasanyrole
+
+            </div>
         </section>
 
         <div class="settingSidebar">

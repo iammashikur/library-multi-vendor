@@ -63,10 +63,17 @@ class BookDataTable extends DataTable
      */
     public function query(Book $model)
     {
-        return $model
+        if(auth()->user()->hasRole(['admin', 'manager'])){
+            return $model
+                ->with(['category', 'library'])
+                ->where('user_id', 1)
+                ->newQuery();
+        }else{
+            return $model
             ->with(['category', 'library'])
             ->where('user_id', Auth::id())
             ->newQuery();
+        }
     }
 
     /**

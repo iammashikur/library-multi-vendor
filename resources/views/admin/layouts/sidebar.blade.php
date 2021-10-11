@@ -24,7 +24,7 @@
             </li>
             @endhasanyrole
 
-            @hasanyrole('admin|librarian')
+            @hasanyrole('admin|librarian|manager')
             <li class="dropdown {{ MenuActive('library', 2) }}">
                 <a href="{{ route('admin.library.index') }}" class="nav-link"><i
                         data-feather="book-open"></i><span>Libaray Setting</span></a>

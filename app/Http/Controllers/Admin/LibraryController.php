@@ -15,7 +15,7 @@ class LibraryController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['role:librarian|admin']);
+        $this->middleware(['role:librarian|admin|manager']);
     }
 
     /**
@@ -25,8 +25,13 @@ class LibraryController extends Controller
      */
     public function index()
     {
-        $library = Library::where('user_id', Auth::id())->first();
-        return view('admin.library_all', compact('library'));
+        if(auth()->user()->hasRole(['admin', 'manager'])){
+            $library = Library::where('user_id', 1)->first();
+            return view('admin.library_all', compact('library'));
+        }else{
+            $library = Library::where('user_id', Auth::id())->first();
+            return view('admin.library_all', compact('library'));
+        }
     }
 
     /**

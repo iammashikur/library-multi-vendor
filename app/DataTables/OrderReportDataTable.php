@@ -25,7 +25,7 @@ class OrderReportDataTable extends DataTable
             ->eloquent($query)
             ->filter(function($search){
                 $search->whereBetween('created_at', [request('start_date'), request('end_date')])->get();
-                
+
             })
             ->addColumn('customer', function($customer){
                 return $customer->user->name;
@@ -43,7 +43,7 @@ class OrderReportDataTable extends DataTable
                 }elseif($status->status == 3){
                     $data = '<div class="badge btn-danger">Cancelld</div>';
                 }
-               
+
                 return $data;
             })
             ->addColumn('action', function($action){
@@ -61,12 +61,19 @@ class OrderReportDataTable extends DataTable
      */
     public function query(Order $model)
     {
-        return $model
-        ->where('library_id', Auth::user()->library->id)
-        ->where('status', '!=', 1)
-        ->with('user')
-        ->newQuery();  
-        
+        if(auth()->user()->hasRole(['admin', 'manager'])){
+            return $model
+            ->where('library_id', 1)
+            ->where('status', 1)
+            ->with('user')
+            ->newQuery();
+        }else{
+            return $model
+            ->where('library_id', Auth::user()->library->id)
+            ->where('status', '!=', 1)
+            ->with('user')
+            ->newQuery();
+        }
     }
 
     /**
@@ -95,8 +102,8 @@ class OrderReportDataTable extends DataTable
                         Button::make('copy')->footer(true),
                         Button::make('print')->footer(true),
                         Button::make('excel')->footer(true)
-                    ); 
-         
+                    );
+
     }
 
     /**

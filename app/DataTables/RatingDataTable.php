@@ -80,7 +80,7 @@ class RatingDataTable extends DataTable
                   ->addClass('text-center'),
         ];
     }
-
+    
     /**
      * Get filename for export.
      *

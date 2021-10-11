@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:admin|librarian']);
+        $this->middleware(['role:admin|librarian|manager']);
     }
 
     /**
